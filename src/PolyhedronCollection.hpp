@@ -29,9 +29,9 @@ struct PolyhedronCollection
     // ---------- ATTRIBUTI POLIEDRI --------------- //
     unsigned int NumCell3Ds = 0; ///< number of Cell2D
     std::vector<unsigned int> Cell3DsId = {}; ///< Cell2D id, size 1 x NumberCell2D
-    std::vector<unsigned int> NumCell3DsVertices;
-    std::vector<unsigned int> NumCell3DsEdges;
-    std::vector<unsigned int> NumCell3DsFaces;
+    <unsigned int> NumCell3DsVertices;
+    <unsigned int> NumCell3DsEdges;
+    <unsigned int> NumCell3DsFaces;
     std::vector<std::vector<unsigned int>> Cell3DsVertices = {}; ///< Cell2D Vertices indices, size 1 x NumberCell2DVertices[NumberCell2D]
     std::vector<std::vector<unsigned int>> Cell3DsEdges = {}; ///< Cell2D Cell1D indices, size 1 x NumberCell2DEdges[NumberCell2D]
     std::vector<std::vector<unsigned int>> Cell3DsFaces = {};
