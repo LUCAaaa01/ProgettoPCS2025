@@ -1,26 +1,28 @@
+#pragma once
+
 #include <vector>
 #include <fstream>
 #include "PolyhedronCollection.hpp"
 
-void writeVTK(const Polyhedron& P, const std::string& filename) {
+void writeVTK(const PolyhedronCollection& p, const std::string& filename) {
     std::ofstream out(filename);
     out << "# vtk DataFile Version 3.0\n";
     out << "Polyhedron vertices and edges\n";
     out << "ASCII\nDATASET POLYDATA\n";
     
-    // 1) punti
-    int N = P.numVertices();
-    out << "POINTS " << N << " float\n";
+    // Stampa dei punti
+    int N = p.numVertices();
+    out << "Punti " << N << " float\n";
     for (int i = 0; i < N; ++i) {
-        auto [x,y,z] = P.vertex(i);
+        auto [x,y,z] = p.vertex(i);
         out << x << " " << y << " " << z << "\n";
     }
     
-    // 2) linee
-    auto edges = P.allEdges(); // vector<pair<int,int>>
+    // Stampa dei lati
+    auto edges = p.allEdges(); //
     int M = edges.size();
-    // formato: <num_points_per_cell> <pt0> <pt1>
-    out << "LINES " << M << " " << (M * 3) << "\n";
+    // Formato: <num_points_per_cell> <pt0> <pt1>
+    out << "Lati " << M << " " << (M * 3) << "\n";
     for (auto [u,v] : edges)
         out << 2 << " " << u << " " << v << "\n";
     
