@@ -35,7 +35,7 @@ list(APPEND ${PROJECT_NAME}_LINKED_LIBRARIES PRIVATE GTest::gmock_main)
 
 ## SUBDIRECTORY
 add_subdirectory(src) 
-#add_subdirectory(Export Paraview)
+add_subdirectory(Export Paraview)
 add_subdirectory(src_test)
 
 list(APPEND ${PROJECT_NAME}_TEST_sources ${src_sources} ${src_paraview_sources} ${src_test_sources})
