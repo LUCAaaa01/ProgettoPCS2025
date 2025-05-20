@@ -1,9 +1,7 @@
-#pragma once
-
 #include <gtest/gtest.h>
 #include "PolyhedronCollection.hpp"
 #include "vertex.hpp"  
-#include "Eigen/Dense"
+#include "Eigen/Eigen"
 
 class VertexTest : public ::testing::Test {
 protected:
