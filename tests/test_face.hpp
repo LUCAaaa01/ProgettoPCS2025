@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "PolyhedronCollection.hpp"
 #include "face.hpp"
-#include "Eigen/Dense"
+#include "Eigen/Eigen"
 
 class FaceTest : public ::testing::Test {
 protected:
