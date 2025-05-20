@@ -1,5 +1,6 @@
 #include "face.hpp"
 #include "PolyhedronCollection.hpp"
+#include "UCDUtilities.hpp"
 
 
 void print_point(const PolyhedronCollection& p, unsigned int id_point){
@@ -43,7 +44,14 @@ int main(){
     face_test(p);
     std::cout << "************************************** " << std::endl;
     
-
+    Gedim::UCDUtilities utilities;
+    {
+        utilities.ExportPoints("./Cell0Ds.inp",meshCell0DsCoordinates)
+        utilities.ExportSegments("./Cell1Ds.inp",
+                                 mesh.Cell0DsCoordinates,
+                                 mesh.Cell1DsEndPoints)
+    }
+    
 
     return 0;
 }
