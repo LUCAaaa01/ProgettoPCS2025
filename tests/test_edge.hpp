@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "PolyhedronCollection.hpp"
 #include "edge.hpp"
-#include "Eigen/Dense"
+#include "Eigen/Eigen"
 
 class EdgeTest : public ::testing::Test {
 protected:
