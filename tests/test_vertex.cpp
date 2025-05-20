@@ -7,6 +7,7 @@ class VertexTest : public ::testing::Test {
 protected:
   PolyhedronCollection p;
 
+  // la funzione override inizializza tutte le risorse che servono prima di ogni test
   void SetUp() override {
     // preparo p con capacità iniziale
     vertex::initialize(p, 5);
