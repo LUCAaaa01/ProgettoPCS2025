@@ -21,8 +21,6 @@ list(APPEND src_sources ${CMAKE_CURRENT_SOURCE_DIR}/polyhedron.cpp)
 
 list(APPEND src_headers ${CMAKE_CURRENT_SOURCE_DIR}/PolyhedronCollection.hpp)
 
-list(APPEND src_sources ${CMAKE_CURRENT_SOURCE_DIR}/ParaviewExporter.cpp)
-
 
 list(APPEND src_includes ${CMAKE_CURRENT_SOURCE_DIR})
 
