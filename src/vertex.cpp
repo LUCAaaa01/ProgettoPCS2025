@@ -97,7 +97,6 @@ namespace vertex{
     }
 
     double distance(const PolyhedronCollection& p_coll, unsigned int p1_id, unsigned int p2_id){
-        // controlliamo che l'id dei punti esistano
         assert((contains(p_coll.Cell0DsId, p1_id) && contains(p_coll.Cell0DsId, p2_id))
                 && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
         

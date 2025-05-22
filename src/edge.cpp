@@ -76,6 +76,6 @@ namespace edge{
         assert(contains(p_coll.Cell1DsId, edge_id) && "Lato non esistente! Impossibile effettuare l'operazione richiesta.");
 
         // calcolo la distanza tra gli estremi
-        return vertex::distance(p_coll, p_coll.Cell1DsEndpoints(edge_id, 0), p_coll.Cell1DsEndpoints(edge_id, 1));
+        return vertex::distance(p_coll, p_coll.Cell1DsEndpoints(0, edge_id), p_coll.Cell1DsEndpoints(1, edge_id));
     }
 }

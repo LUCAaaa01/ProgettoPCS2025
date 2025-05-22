@@ -46,10 +46,10 @@ int main(){
     
     Gedim::UCDUtilities utilities;
     {
-        utilities.ExportPoints("./Cell0Ds.inp",meshCell0DsCoordinates)
+        utilities.ExportPoints("./Cell0Ds.inp", p.Cell0DsCoordinates);
         utilities.ExportSegments("./Cell1Ds.inp",
-                                 mesh.Cell0DsCoordinates,
-                                 mesh.Cell1DsEndPoints)
+                                 p.Cell0DsCoordinates,
+                                 p.Cell1DsEndpoints);
     }
     
 
