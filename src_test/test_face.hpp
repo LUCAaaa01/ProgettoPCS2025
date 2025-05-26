@@ -14,14 +14,15 @@ protected:
     face::initialize(p, 5);
     // Prepara 4 punti per le facce
     p.Cell0DsCoordinates.resize(3, 4);
-    p.Cell0DsCoordinates <<
-      0, 1, 1, 0,
-      0, 0, 1, 1,
-      0, 0, 0, 0;
+    p.Cell0DsCoordinates.col(0) << 0, 0, 0;
+    p.Cell0DsCoordinates.col(1) << 1, 0, 0;
+    p.Cell0DsCoordinates.col(2) << 1, 1, 0;
+    p.Cell0DsCoordinates.col(3) << 0, 1, 0;
+
     p.NumCell0Ds = 4;
     p.Cell0DsId = {0, 1, 2, 3};
 
-    edge::initialize(p, 15);
+    edge::initialize(p, 12);
   }
 };
 
