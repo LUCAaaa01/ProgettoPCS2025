@@ -43,3 +43,9 @@ struct PolyhedronCollection
 inline bool contains(const std::vector<unsigned int>& vec, unsigned int element){
     return std::find(vec.begin(), vec.end(), element) != vec.end();
 }
+
+inline unsigned int factorial(unsigned int n){
+    if(n == 1)
+        return 1;
+    return n*factorial(n-1);
+}

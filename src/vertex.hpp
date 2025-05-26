@@ -121,4 +121,29 @@ namespace vertex{
     * @return ritorna le coordinate dell'interpolazione lineare.
     */
     Eigen::VectorXd interpolatePoints(const PolyhedronCollection& p_coll, unsigned int p1_id, unsigned int p2_id, double weight);
+
+
+    /**
+    * @brief Calcola il punto riflesso di un segmento
+    * 
+    * @param p_coll oggetto di PolyhedronCollection
+    * @param first_endpoints id del primo punto del lato
+    * @param second_endpoints id del secondo punto del lato
+    * @param point_to_reflect id del punto da riflettere
+    * 
+    * @return ritorna l'id del punto riflesso (che è stato memorizzato).
+    */
+    unsigned int reflect(PolyhedronCollection& p_coll, unsigned int first_endpoints, unsigned int second_endpoints, unsigned int point_to_reflect);
+
+
+    /**
+    * @brief Conta il numero di vertici del solido geodetico di classe I
+    * 
+    * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
+    * @param b parametro di triangolazione
+    * @param c parametro di triangolazione
+    * 
+    * @return ritorna il numero di vertici del solido geodetico di classe I.
+    */ 
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c);
 }

@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include "PolyhedronCollection.hpp"
+#include "vertex.hpp"
+#include "edge.hpp"
+#include "face.hpp"
 
 namespace polyhedron{
     /**
@@ -68,30 +71,49 @@ namespace polyhedron{
    * @param p numero di vertici del poligono che si osserva guardando ciascuna faccia
    * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
    * 
-   * @return ritorna l'id del poliedro creato
+   * @return ritorna l'id del poliedro creato (-1 se non esiste la combinazione p e q)
    */
-   unsigned int build_platonic_solid(PolyhedronCollection& p_coll, int p, int q);
+   int build_platonic_solid(PolyhedronCollection& p_coll, unsigned int p, unsigned int q);
 
 
    /**
    * @brief Identifica quale poliedro devo creare
    * 
    * @param p_coll oggetto di PolyhedronCollection
+   * @param prefix nome del solido platonico che si vuole costruire
    * @param p numero di vertici del poligono che si osserva guardando ciascuna faccia
    * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
+   * @param n_vertices numero di vertici del poliedro
+   * @param n_edges numero di lati del poliedro
+   * @param n_faces numero di facce del poliedro
    * 
-   * @return ritorna l'id del solido platonico (-1 se non esiste la combinazione p e q)
+   * @return ritorna l'id del solido platonico creato
    */
-   int import_platonic_solid(PolyhedronCollection& p_coll, int p, int q);
+   unsigned int import_platonic_solid(PolyhedronCollection& p_coll, const std::string& prefix, unsigned int n_vertices, unsigned int n_edges, unsigned int n_faces);
 
 
-    /**
+   /**
    * @brief Crea il duale del poliedro.
    * 
    * @param p_coll oggetto di PolyhedronCollection
    * @param poly_id id del poliedro di cui si vuole calcolare il duale
+   * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
    * 
    * @return ritorna l'id del duale del poliedro
    */
-   unsigned int createDual(PolyhedronCollection& p_coll, unsigned int poly_id);
+   unsigned int createDual(PolyhedronCollection& p_coll, unsigned int poly_id, const unsigned int q);
+
+
+   /**
+   * @brief Crea il poliedro geodetico di classe I.
+   * 
+   * @param p_coll oggetto di PolyhedronCollection
+   * @param poly_id id del poliedro di cui si vuole calcolare il duale
+   * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
+   * @param b parametro di triangolazione
+   * 
+   * @return ritorna l'id del poliedro 
+   */
+   unsigned int buildGeodesicClassI(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int q, unsigned int b);
+
 }

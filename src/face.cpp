@@ -1,10 +1,11 @@
 #include "face.hpp"
 #include <unordered_set>
+#include <cmath>
 
 namespace face{
     
     void initialize(PolyhedronCollection& p_coll, unsigned int n_faces){
-        // inizializza le variabili legati alle facce
+        // inizializza le variabili legate alle facce
         p_coll.NumCell2Ds = 0;
         p_coll.Cell2DsId = {};
         p_coll.NumCell2DsVertices = {};
@@ -22,7 +23,7 @@ namespace face{
             p_coll.Cell2DsVertices.reserve(new_n_faces); // riserva una capacità di new_n_faces per memorizzare vettori di punti
             p_coll.Cell2DsEdges.reserve(new_n_faces); // riserva una capacità di new_n_faces per memorizzare vettori di lati
         }else{
-            //Inizializziamo nuovamente le variabili legate ai lati
+            //Inizializziamo nuovamente le variabili legate alle facce
             initialize(p_coll, new_n_faces);
         }
     }
@@ -120,7 +121,9 @@ namespace face{
         assert(contains(p_coll.Cell2DsId, face_id) && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
         
         // calcolo il centroide e lo aggiungo alla lista dei punti
-        return vertex::add(p_coll, vertex::averagePoints(p_coll, p_coll.Cell2DsVertices[face_id]));
+        unsigned int point_id = vertex::add(p_coll, vertex::averagePoints(p_coll, p_coll.Cell2DsVertices[face_id]));
+        vertex::projectOnSphere(p_coll, point_id);
+        return point_id;
     }
  
     bool areAdjacent(PolyhedronCollection& p_coll, unsigned int f1_id, unsigned int f2_id){
@@ -130,10 +133,10 @@ namespace face{
                 && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
 
         // creiamo un set contenente gli elementi del primo vettore (complessità O(n))
-        std::unordered_set<unsigned int> set1(p_coll.Cell2DsVertices[f1_id].begin(), p_coll.Cell2DsVertices[f1_id].end()); 
+        std::unordered_set<unsigned int> set1(p_coll.Cell2DsEdges[f1_id].begin(), p_coll.Cell2DsEdges[f1_id].end()); 
 
         // controlliamo se almeno un elemento del secondo vettore è nel set. Complessità (O(n))
-        for (const auto elt : p_coll.Cell2DsVertices[f2_id]) {
+        for (const auto elt : p_coll.Cell2DsEdges[f2_id]) {
             //verifichiamo se hanno un elemento in comune
             if (set1.find(elt) != set1.end()){
                 result =  true;
@@ -141,5 +144,59 @@ namespace face{
             }
         }
         return result;
+    }
+
+    std::vector<unsigned int> computeCharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b){
+        std::vector<unsigned int> new_faces_id = {};
+
+        std::vector<unsigned int> vertices_id;
+        vertices_id.reserve(factorial(b));
+        vertices_id.push_back(p_coll.Cell2DsVertices[face_id][0]);
+
+        for(size_t i = 1; i <= b; i++){
+            // punto iniziale della riga
+            vertices_id.push_back(vertex::add(p_coll, vertex::interpolatePoints(p_coll, p_coll.Cell2DsVertices[face_id][0], p_coll.Cell2DsVertices[face_id][1], i/(1.0*b))));
+
+            for(size_t j = 0; j < i-1; j++){
+                // creo il nodo intermedio
+                vertices_id.push_back(vertex::reflect(p_coll, vertices_id[vertices_id.size()-1 - i], vertices_id[vertices_id.size()-1 - i + 1], vertices_id[vertices_id.size()-1 - (2*i-1)]));
+
+                // creo le due facce triangolari
+                new_faces_id.push_back(face::add(p_coll, {vertices_id.back(), vertices_id[vertices_id.size()-1 -1], vertices_id[vertices_id.size()-1 -1 -i]}));
+                new_faces_id.push_back(face::add(p_coll, {vertices_id.back(), vertices_id[vertices_id.size()-1 -i], vertices_id[vertices_id.size()-1 -1 -i]}));
+            }
+
+            // punto finale della riga;
+            vertices_id.push_back(vertex::add(p_coll, vertex::interpolatePoints(p_coll, p_coll.Cell2DsVertices[face_id][0], p_coll.Cell2DsVertices[face_id][2], i/(1.0*b))));
+
+            // creo il triangolo finale:
+            new_faces_id.push_back(face::add(p_coll, {vertices_id.back(), vertices_id[vertices_id.size()-1 -1], vertices_id[vertices_id.size()-1-1-i]}));
+        }
+        std::cout << "Ho appena terminato la triangolazione. Il numero di vertici che ho inserito sono: " << vertices_id.size() << std::endl;
+        std::cout << "Il numero di vertici che sono stati inseriti sono: " << p_coll.Cell0DsId.size() << std::endl;
+        return new_faces_id;
+    }
+
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c){
+        unsigned int t = b*b + 2*b*c + c*c;
+        unsigned int n_faces = 0;
+        switch (q) {
+            case 3:
+                n_faces = 4*t;
+                break;
+        
+            case 4:
+                n_faces = 8*t;
+                break;
+
+            case 5:
+                n_faces = 20*t;
+                break;
+        
+            default:
+                std::cerr << "Error! q si not valid!" << std::endl;
+                break;
+        }
+        return n_faces;
     }
 }

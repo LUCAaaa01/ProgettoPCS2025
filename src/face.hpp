@@ -37,7 +37,7 @@ namespace face{
 
    
    /**
-   * @brief Resistituisce l'id di una faccia dati i lati.
+   * @brief Resistituisce l'id di una faccia dati i punti.
    * 
    * @param p_coll oggetto di PolyhedronCollection
    * @param vertices_id punti della faccia
@@ -77,12 +77,37 @@ namespace face{
    /**
    * @brief Confronta se due facce sono adiacenti.
    * 
+   * @param p_coll oggetto di PolyhedronCollection
    * @param f1_id id della prima faccia
    * @param f2_id id della seconda faccia
    * 
    * @return indica se le facce sono adiacenti 
    */   
    bool areAdjacent(PolyhedronCollection& p_coll, unsigned int f1_id, unsigned int f2_id);
+
+
+   /**
+   * @brief Calcola la triangolazione caratterizzante la faccia dei poliedri geodetici di classe I.
+   * 
+   * @param p_coll oggetto di PolyhedronCollection
+   * @param face_id id della faccia di cui effettuare la triangolazione
+   * @param b parametro di triangolazione
+   * 
+   * @return ritorna il vettore di indici delle facce
+   */
+   std::vector<unsigned int> computeCharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b);
+
+
+    /**
+    * @brief Conta il numero di facce del solido geodetico di classe I
+    *
+    * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
+    * @param b parametro di triangolazione
+    * @param c parametro di triangolazione
+    * 
+    * @return ritorna il numero di facce del solido geodetico di classe I.
+    */ 
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c);
 
 
 

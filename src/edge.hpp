@@ -73,4 +73,15 @@ namespace edge{
     double length(PolyhedronCollection& p_coll, unsigned int edge_id);
 
 
+    /**
+    * @brief Conta il numero di lati del solido geodetico di classe I
+    * 
+    * @param q denota il numero di vertici del poligono che si osserva guardando ciascun vertice
+    * @param b parametro di triangolazione
+    * @param c parametro di triangolazione
+    * 
+    * @return ritorna il numero di lati del solido geodetico di classe I.
+    */ 
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c);
+
 }

@@ -51,7 +51,10 @@ list(APPEND ${PROJECT_NAME}_sources ${src_sources})
 list(APPEND ${PROJECT_NAME}_headers ${src_headers})
 list(APPEND ${PROJECT_NAME}_includes ${src_includes})
 
-add_executable(${CMAKE_PROJECT_NAME} main_prova.cpp ${${PROJECT_NAME}_sources} ${${PROJECT_NAME}_headers})
+add_executable(${CMAKE_PROJECT_NAME} main.cpp ${${PROJECT_NAME}_sources} ${${PROJECT_NAME}_headers})
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Polyhedron/tetrahedron_vertex.txt  ${CMAKE_CURRENT_SOURCE_DIR}/Polyhedron/tetrahedron_face.txt  ${CMAKE_CURRENT_SOURCE_DIR}/Polyhedron/cube_vertex.txt ${CMAKE_CURRENT_SOURCE_DIR}/Polyhedron/cube_face.txt
+      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 target_link_libraries(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_LINKED_LIBRARIES})
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_includes})

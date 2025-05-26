@@ -128,4 +128,38 @@ namespace vertex{
 
         return (1-weight)*p_coll.Cell0DsCoordinates.col(p1_id) + weight*p_coll.Cell0DsCoordinates.col(p2_id);
     }
+
+    unsigned int reflect(PolyhedronCollection& p_coll, unsigned int first_endpoints, unsigned int second_endpoints, unsigned int point_to_reflect){
+        // controlliamo che l'id dei punti esistano
+        assert((contains(p_coll.Cell0DsId, first_endpoints) && contains(p_coll.Cell0DsId, second_endpoints) && 
+        contains(p_coll.Cell0DsId, point_to_reflect)) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
+
+        double weight = 2.0;
+        return add(p_coll, (1-weight)*p_coll.Cell0DsCoordinates.col(point_to_reflect) + 
+        weight*((p_coll.Cell0DsCoordinates.col(first_endpoints) + p_coll.Cell0DsCoordinates.col(second_endpoints))/2));
+        
+    }
+
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c){
+        unsigned int t = b*b + 2*b*c + c*c;
+        unsigned int n_vertices = 0;
+        switch (q) {
+            case 3:
+                n_vertices = 2*t + 2;
+                break;
+        
+            case 4:
+                n_vertices = 4*t + 2;
+                break;
+
+            case 5:
+                n_vertices = 10*t + 2;
+                break;
+        
+            default:
+                std::cerr << "Error! q si not valid!" << std::endl;
+                break;
+        }
+        return n_vertices;
+    }
 }

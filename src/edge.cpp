@@ -78,4 +78,27 @@ namespace edge{
         // calcolo la distanza tra gli estremi
         return vertex::distance(p_coll, p_coll.Cell1DsEndpoints(0, edge_id), p_coll.Cell1DsEndpoints(1, edge_id));
     }
+
+    unsigned int countGeodesicClassI(unsigned int q, unsigned int b, unsigned int c){
+        unsigned int t = b*b + 2*b*c + c*c;
+        unsigned int n_edges = 0;
+        switch (q) {
+            case 3:
+                n_edges = 6*t;
+                break;
+        
+            case 4:
+                n_edges = 12*t;
+                break;
+
+            case 5:
+                n_edges = 30*t;
+                break;
+        
+            default:
+                std::cerr << "Error! q si not valid!" << std::endl;
+                break;
+        }
+        return n_edges;
+    }
 }
