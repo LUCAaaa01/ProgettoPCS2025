@@ -13,7 +13,7 @@ protected:
     // Inizializza con capacità per 5 facce
     face::initialize(p, 5);
     // Prepara 4 punti per le facce
-    p.Cell0DsCoordinates.resize(3, 6);
+    p.Cell0DsCoordinates.resize(3, 4);
     p.Cell0DsCoordinates <<
       0, 1, 1, 0,
       0, 0, 1, 1,
