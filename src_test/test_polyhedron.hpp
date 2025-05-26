@@ -11,23 +11,18 @@
 class PolyhedronTest : public ::testing::Test {
 protected:
   PolyhedronCollection p;
+  unsigned int tetId;
 
   void SetUp() override {
-    vertex::initialize(p, 4);
-    edge::initialize(p, 6);
-    face::initialize(p, 4);
-
-    // Creo un tetraedro
-    vertex::add(p, Eigen::Vector3d(1, 1, 1));
-    vertex::add(p, Eigen::Vector3d(-1, -1, 1));
-    vertex::add(p, Eigen::Vector3d(-1, 1, -1));
-    vertex::add(p, Eigen::Vector3d(1, -1, -1));
-
-    // Creo le 4 facce del tetraedro come triangoli
-    f0 = face::add(p, {0, 1, 2});
-    f1 = face::add(p, {0, 1, 3});
-    f2 = face::add(p, {0, 2, 3});
-    f3 = face::add(p, {1, 2, 3});
+    // Costruisco tetraedro platonico base: {p=3, q=3}
+    tetId = polyhedron::build_platonic_solid(p, 3, 3);
+    // Verifico che sia stato creato un solo poliedro 
+    ASSERT_EQ(p.NumCell3Ds, 1u);
+    // Conservo gli ID delle facce per i test dopo
+    f0 = p.Cell3DsFaces[tetId][0];
+    f1 = p.Cell3DsFaces[tetId][1];
+    f2 = p.Cell3DsFaces[tetId][2];
+    f3 = p.Cell3DsFaces[tetId][3];
   }
 
   unsigned int f0, f1, f2, f3;
@@ -88,3 +83,43 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
   EXPECT_NE(id1, id2);
   EXPECT_EQ(p.NumCell3Ds, 2u);
 }
+
+TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
+  // Importo un cubo (p=4,q=3)
+  unsigned int cubeId = polyhedron::build_platonic_solid(p, 4, 3);
+  ASSERT_EQ(p.Cell3DsId.size(), 1u);
+  EXPECT_EQ(p.NumCell3DsVertices[cubeId], 8u);
+  EXPECT_EQ(p.NumCell3DsEdges[cubeId], 12u);
+  EXPECT_EQ(p.NumCell3DsFaces[cubeId], 6u);
+
+  // Creo il duale
+  unsigned int dualId = polyhedron::createDual(p, cubeId, 3);
+  // ora NumCell3Ds dovrebbe essere 2
+  EXPECT_EQ(p.NumCell3Ds, 2u);
+
+  // Verifico i conteggi del duale
+  EXPECT_EQ(p.NumCell3DsVertices[dualId], 6u);
+  EXPECT_EQ(p.NumCell3DsEdges[dualId], 12u);
+  EXPECT_EQ(p.NumCell3DsFaces[dualId], 8u);
+}
+
+// Verifica che il conteggio dei vertex, faces e edges cresca correttamente.
+TEST_F(PolyhedronTest, BuildGeodesicClassIOnTetrahedron) {
+  // crea un tetraedro (p=3,q=3)
+  unsigned int tetId = polyhedron::build_platonic_solid(p, 3, 3);
+  ASSERT_EQ(p.NumCell3Ds, 1u);
+
+  // Applico geodesic classe I con b=1
+  unsigned int geo1 = polyhedron::buildGeodesicClassI(p, tetId, 3, 1);
+  EXPECT_EQ(p.NumCell3DsVertices[geo1], p.NumCell3DsVertices[tetId]);
+  EXPECT_EQ(p.NumCell3DsEdges[geo1],    p.NumCell3DsEdges[tetId]);
+  EXPECT_EQ(p.NumCell3DsFaces[geo1],    p.NumCell3DsFaces[tetId]);
+
+  // Lo applico con b=2: ogni spigolo viene suddiviso in 2 parti
+  unsigned int geo2 = polyhedron::buildGeodesicClassI(p, tetId, 3, 2);
+  // Per un tetraedro originale (4v,6e,4f): vertici=6, lato=12 e facce=16
+  EXPECT_EQ(p.NumCell3DsVertices[geo2], 10u);
+  EXPECT_EQ(p.NumCell3DsEdges[geo2],    12u);
+  EXPECT_EQ(p.NumCell3DsFaces[geo2],    16u);
+}
+
