@@ -209,7 +209,7 @@ namespace polyhedron{
         // creo i centroidi
     
         //abbiamo scelto la unordered_map perché nel caso medio la complessità computazionale è O(1) (per la insert e la search)
-        std::unordered_map<unsigned int, unsigned int> map_face_id_centroid; 
+        std::map<unsigned int, unsigned int> map_face_id_centroid; 
         std::vector<unsigned int> dual_poly_id_faces;
         dual_poly_id_faces.reserve(new_n_faces);
     
