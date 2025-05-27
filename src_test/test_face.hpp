@@ -13,7 +13,7 @@ protected:
     // Inizializza con capacità per 5 facce
     face::initialize(p, 5);
     // Prepara 4 punti per le facce
-    p.Cell0DsCoordinates.resize(3, 4);
+    p.Cell0DsCoordinates.resize(3, 5);
     p.Cell0DsCoordinates.col(0) << 0, 0, 0;
     p.Cell0DsCoordinates.col(1) << 1, 0, 0;
     p.Cell0DsCoordinates.col(2) << 1, 1, 0;
@@ -43,7 +43,7 @@ TEST_F(FaceTest, AddFacesAndPreventDuplicates) {
 // Verifica che getCentroid crei un nuovo punto e ne calcoli correttamente le coordinate
 TEST_F(FaceTest, GetCentroidCreatesNewPoint) {
   unsigned int f = face::add(p, {0,1,2});
-  unsigned int cid = face::getCentroid(p, f);
+  unsigned int cid = face::getCentroid(p, f, false);
   EXPECT_EQ(cid, p.NumCell0Ds - 1);
   Eigen::Vector3d c = p.Cell0DsCoordinates.col(cid);
   EXPECT_NEAR(c(0), 2.0/3.0, 1e-6);
