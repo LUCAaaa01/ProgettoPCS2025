@@ -68,10 +68,11 @@ namespace face{
    * 
    * @param p_coll oggetto di PolyhedronCollection
    * @param face_id id della faccia
+   * @param projection indica se si vuole proiettare il centroide sulla sfera unitaria nell'origine
    *  
    * @return ritorna l'id del nuovo punto o di quello già esistente
    */
-   unsigned int getCentroid(PolyhedronCollection& p_coll, unsigned int face_id);
+   unsigned int getCentroid(PolyhedronCollection& p_coll, unsigned int face_id, bool projection = true);
 
 
    /**
