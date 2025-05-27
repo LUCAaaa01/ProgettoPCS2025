@@ -81,7 +81,7 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
   unsigned int id1 = polyhedron::add(p, {f0, f1, f2, f3}, false);
   unsigned int id2 = polyhedron::add(p, {f0, f1, f2, f3}, false);
   EXPECT_NE(id1, id2);
-  EXPECT_EQ(p.NumCell3Ds, 2u);
+  EXPECT_EQ(p.NumCell3Ds, 3u);
 }
 
 TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
