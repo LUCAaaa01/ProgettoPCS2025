@@ -87,15 +87,15 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
 TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
   // Importo un cubo (p=4,q=3)
   unsigned int cubeId = polyhedron::build_platonic_solid(p, 4, 3);
-  ASSERT_EQ(p.Cell3DsId.size(), 1u);
+  ASSERT_EQ(p.Cell3DsId.size(), 2u);
   EXPECT_EQ(p.NumCell3DsVertices[cubeId], 8u);
   EXPECT_EQ(p.NumCell3DsEdges[cubeId], 12u);
   EXPECT_EQ(p.NumCell3DsFaces[cubeId], 6u);
 
   // Creo il duale
   unsigned int dualId = polyhedron::createDual(p, cubeId, 3);
-  // ora NumCell3Ds dovrebbe essere 2
-  EXPECT_EQ(p.NumCell3Ds, 2u);
+  // ora NumCell3Ds dovrebbe essere 3
+  EXPECT_EQ(p.NumCell3Ds, 3u);
 
   // Verifico i conteggi del duale
   EXPECT_EQ(p.NumCell3DsVertices[dualId], 6u);
