@@ -117,12 +117,13 @@ namespace face{
     // rimuovo il punto, se esiste e non viene usato in nessun poliedro
     bool remove(PolyhedronCollection& p_coll, unsigned int face_id); // --- non so se ha senso
 
-    unsigned int getCentroid(PolyhedronCollection& p_coll, unsigned int face_id){
+    unsigned int getCentroid(PolyhedronCollection& p_coll, unsigned int face_id, bool projection){
         assert(contains(p_coll.Cell2DsId, face_id) && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
         
         // calcolo il centroide e lo aggiungo alla lista dei punti
         unsigned int point_id = vertex::add(p_coll, vertex::averagePoints(p_coll, p_coll.Cell2DsVertices[face_id]));
-        vertex::projectOnSphere(p_coll, point_id);
+        if(projection)
+            vertex::projectOnSphere(p_coll, point_id);
         return point_id;
     }
  
