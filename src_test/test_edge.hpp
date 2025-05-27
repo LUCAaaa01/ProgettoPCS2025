@@ -13,6 +13,7 @@ protected:
     // Inizializza con capacità per 5 segmenti
     edge::initialize(p, 5);
     // Prepara 4 punti per la lunghezza dei segmenti
+    p.Cell0DsCoordinates.resize(3,4);
     p.Cell0DsCoordinates.col(0) << 0, 0, 0;
     p.Cell0DsCoordinates.col(1) << 1, 0, 0;
     p.Cell0DsCoordinates.col(2) << 1, 1, 0;
