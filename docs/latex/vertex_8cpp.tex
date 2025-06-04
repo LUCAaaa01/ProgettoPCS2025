@@ -1,0 +1,49 @@
+\doxysection{src/vertex.cpp File Reference}
+\hypertarget{vertex_8cpp}{}\label{vertex_8cpp}\index{src/vertex.cpp@{src/vertex.cpp}}
+{\ttfamily \#include "{}vertex.\+hpp"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacevertex}{vertex}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacevertex_a46ef94d2af7ed6b3b40475168b2b958d}{vertex\+::initialize}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int n\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Inizializza i valori legati a punto. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacevertex_ac144fa31f5d6d5c732a5a208691bc1a3}{vertex\+::reshape}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int new\+\_\+n\+\_\+points, bool preservedata=true)
+\begin{DoxyCompactList}\small\item\em Ridimensiona la matrice delle coordinate. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevertex_ad7fc132d0ab801852badca4de57e94ae}{vertex\+::is\+Equal}} (const Eigen\+::\+Vector\+Xd \&p1, const Eigen\+::\+Vector\+Xd \&p2)
+\begin{DoxyCompactList}\small\item\em Confronta se due punti sono uguali. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacevertex_acf3b7280b86d20673c7c544bbd2b9c1d}{vertex\+::get\+Id}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const Eigen\+::\+Vector\+Xd \&point\+\_\+coord)
+\begin{DoxyCompactList}\small\item\em Resistituisce l\textquotesingle{}id di un punto date le coordinate. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacevertex_ae1651239aed424aaa8c413b2ac01daba}{vertex\+::is\+Point\+On\+Sphere}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int point\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Verifica se il punto appartiene alla sfera. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacevertex_a3c5c350b94bda0a0c6a33bb370f225c9}{vertex\+::add}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const Eigen\+::\+Vector3d new\+\_\+point, bool checkpointexists=true, bool should\+Print\+Vertex\+Exists=false)
+\begin{DoxyCompactList}\small\item\em Aggiunge un punto, se non esiste ancora. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacevertex_ace592e049b6afb3697c0f05df82a5953}{vertex\+::project\+On\+Sphere}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int point\+\_\+id, bool inplace=true)
+\begin{DoxyCompactList}\small\item\em Proietta il punto sulla sfera. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacevertex_a0c97c9e86292cf13588f318255c9ce64}{vertex\+::distance}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p1\+\_\+id, unsigned int p2\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Calcola la distanza tra due punti. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{namespacevertex_acfbdefbe746e5cd3fc144e77b8b4eee4}{vertex\+::average\+Points}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::vector$<$ unsigned int $>$ \&id\+\_\+points)
+\begin{DoxyCompactList}\small\item\em Calcola la media aritmetica dei punti. \end{DoxyCompactList}\item 
+Eigen\+::\+Vector\+Xd \mbox{\hyperlink{namespacevertex_af09cf203f91ab8147a1722536951af32}{vertex\+::interpolate\+Points}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p1\+\_\+id, unsigned int p2\+\_\+id, double weight)
+\begin{DoxyCompactList}\small\item\em Calcola la media pesata (interpolazione lineare) tra due punti. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacevertex_aef9cdbc85f4b0409f699fb273aad95f1}{vertex\+::reflect}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int first\+\_\+endpoints, unsigned int second\+\_\+endpoints, unsigned int point\+\_\+to\+\_\+reflect)
+\begin{DoxyCompactList}\small\item\em Calcola il punto riflesso di un segmento. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacevertex_a709d4276dfa9adcc57d9e1ca21ee42b8}{vertex\+::count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
+\begin{DoxyCompactList}\small\item\em Conta il numero di vertici del solido geodetico di classe I e II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr double \mbox{\hyperlink{vertex_8cpp_aa2a392fde68aaa583c9754b399985805}{PRECISION\+\_\+\+TOLLERANCE}} = 1e-\/6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{vertex_8cpp_aa2a392fde68aaa583c9754b399985805}\index{vertex.cpp@{vertex.cpp}!PRECISION\_TOLLERANCE@{PRECISION\_TOLLERANCE}}
+\index{PRECISION\_TOLLERANCE@{PRECISION\_TOLLERANCE}!vertex.cpp@{vertex.cpp}}
+\doxysubsubsection{\texorpdfstring{PRECISION\_TOLLERANCE}{PRECISION\_TOLLERANCE}}
+{\footnotesize\ttfamily \label{vertex_8cpp_aa2a392fde68aaa583c9754b399985805} 
+double PRECISION\+\_\+\+TOLLERANCE = 1e-\/6\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+

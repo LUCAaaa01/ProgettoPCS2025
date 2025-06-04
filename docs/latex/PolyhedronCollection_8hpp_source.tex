@@ -1,0 +1,57 @@
+\doxysection{Polyhedron\+Collection.\+hpp}
+\hypertarget{PolyhedronCollection_8hpp_source}{}\label{PolyhedronCollection_8hpp_source}\index{src/PolyhedronCollection.hpp@{src/PolyhedronCollection.hpp}}
+\mbox{\hyperlink{PolyhedronCollection_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Eigen/Eigen"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//namespace\ PolygonalLibrary\ }}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPolyhedronCollection}{PolyhedronCollection}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ATTRIBUTI\ VERTICI\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ //}}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPolyhedronCollection_afc6db559537d9b58215829fb001163b8}{NumCell0Ds}}\ =\ 0;\ }
+\DoxyCodeLine{00013\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_ab074950dec97b99c99c11059e9d733eb}{Cell0DsId}}\ =\ \{\};\ }
+\DoxyCodeLine{00014\ \ \ \ \ Eigen::MatrixXd\ \mbox{\hyperlink{structPolyhedronCollection_a5e48b8200d44fe6b911cab03e8c0279b}{Cell0DsCoordinates}}\ =\ \{\};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ATTRIBUTI\ SEGMENTI\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ //}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPolyhedronCollection_afb5b0d64f33890f9b8938f344073cbfd}{NumCell1Ds}}\ =\ 0;\ }
+\DoxyCodeLine{00018\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_acdbc60b7914f9925a9a50a6e7d488598}{Cell1DsId}}\ =\ \{\};\ }
+\DoxyCodeLine{00019\ \ \ \ \ Eigen::MatrixXi\ \mbox{\hyperlink{structPolyhedronCollection_a3312eb8357dcac642a84e6b1fee8f0af}{Cell1DsEndpoints}}\ =\ \{\};\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ATTRIBUTI\ FACCE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ //}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPolyhedronCollection_a678215a1d0c681460e513b93553c54d9}{NumCell2Ds}}\ =\ 0;}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_acbf70b9feac3426941e8e3ca703148dc}{Cell2DsId}}\ =\ \{\};}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_aba423b473d0ee9ba7f1e4e5a810949a1}{NumCell2DsVertices}};}
+\DoxyCodeLine{00025\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_ac0064a31f81b0d1bee5295bacc9974fc}{NumCell2DsEdges}};}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::vector<unsigned\ int>>\ \mbox{\hyperlink{structPolyhedronCollection_a47014f5616d66b19485eb6cbbdc02404}{Cell2DsVertices}}\ =\ \{\};}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::vector<unsigned\ int>>\ \mbox{\hyperlink{structPolyhedronCollection_ae933ab64b0bc7a19feddf0a7216e5f6f}{Cell2DsEdges}}\ =\ \{\};\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ ATTRIBUTI\ POLIEDRI\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ //}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structPolyhedronCollection_a1425b476801e9df34b1bed696637b180}{NumCell3Ds}}\ =\ 0;\ }
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_a13c589e16872a9c35b14dbef47c20301}{Cell3DsId}}\ =\ \{\};\ }
+\DoxyCodeLine{00032\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_a571c991d75175da2cfd79507d4836242}{NumCell3DsVertices}};}
+\DoxyCodeLine{00033\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_a57cfab41fb23e0a0d6edbdb262e4fadb}{NumCell3DsEdges}};}
+\DoxyCodeLine{00034\ \ \ \ \ std::vector<unsigned\ int>\ \mbox{\hyperlink{structPolyhedronCollection_a6bf9232499da75edcf8ce30366e6b386}{NumCell3DsFaces}};}
+\DoxyCodeLine{00035\ \ \ \ \ std::vector<std::vector<unsigned\ int>>\ \mbox{\hyperlink{structPolyhedronCollection_ab4015a9656d7d52e94e4819b8bd3e2e8}{Cell3DsVertices}}\ =\ \{\};\ }
+\DoxyCodeLine{00036\ \ \ \ \ std::vector<std::vector<unsigned\ int>>\ \mbox{\hyperlink{structPolyhedronCollection_abb520303bfe0eac517ccb0fa800cd193}{Cell3DsEdges}}\ =\ \{\};\ }
+\DoxyCodeLine{00037\ \ \ \ \ std::vector<std::vector<unsigned\ int>>\ \mbox{\hyperlink{structPolyhedronCollection_a61cab012f9b5e8ed51133e1bc50d3c77}{Cell3DsFaces}}\ =\ \{\};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ Verifica\ se\ un\ elemento\ appartiene\ ad\ un\ vettore}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{PolyhedronCollection_8hpp_adb38eb80f088ffa6b9f09366d94385a6}{contains}}(\textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ vec,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ element)\{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ std::find(vec.begin(),\ vec.end(),\ element)\ !=\ vec.end();}
+\DoxyCodeLine{00045\ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{PolyhedronCollection_8hpp_ae9945c15826a9c1b5c141db314b7f8b4}{factorial}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n)\{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{if}(n\ ==\ 1)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ n*\mbox{\hyperlink{PolyhedronCollection_8hpp_ae9945c15826a9c1b5c141db314b7f8b4}{factorial}}(n-\/1);}
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}

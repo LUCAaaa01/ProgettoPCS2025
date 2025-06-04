@@ -1,0 +1,124 @@
+#include "polyhedron.hpp"
+#include "PolyhedronCollection.hpp"
+#include "UCDUtilities.hpp"
+#include <set>
+#include <string>
+
+int main(int argc, char* argv[]){
+    // 4 0 6 parametri più il nome del programma
+    if(argc != 5 and argc != 7){
+        std::cerr << "Errore! Numero di parametri non valido!" << std::endl;
+        return 1;
+    }
+
+    // leggiamo i valori in input
+    unsigned int p = std::stoul(argv[1]);
+    unsigned int q = std::stoul(argv[2]);
+
+    unsigned int b = std::stoul(argv[3]);
+    unsigned int c = std::stoul(argv[4]);
+
+    // controllo che la triangolazione non sia di classe III
+    if(c != 0 and c != b){
+        std::cerr << "Errore! Il parametro c non è corretto!" << std::endl;
+        return 2;
+    }
+
+    // creiamo l'oggetto di PolyhedronCollection
+    PolyhedronCollection p_coll;
+
+    unsigned int poly_id;
+    bool graphIsWeighted = true;
+    if(p == 3){
+        poly_id = polyhedron::createGeodesicPolyhedron(p_coll, p, q, b, c);
+        graphIsWeighted = false;
+    }
+    else
+        poly_id = polyhedron::createGoldbergPolyhedron(p_coll, p, q, b, c);
+
+    
+    //creiamo se richiesto lo shortest path
+    std::vector<int> vertices_path = {};
+    std::vector<int> edges_path = {};
+
+    if(argc == 7){
+        unsigned int id1 = std::stoul(argv[5]);
+        unsigned int id2 = std::stoul(argv[6]);
+        double distance_path = polyhedron::findShortestPath(p_coll, poly_id, id1, id2, vertices_path, edges_path, graphIsWeighted);
+
+        // Stampo informazioni del cammino
+        std::cout << "Lunghezza complessiva del cammino: " << distance_path << std::endl;
+        std::cout << "Numero di lati nel cammino minimo: " << edges_path.size() << std::endl;
+    }
+
+    Gedim::UCDUtilities utilities;
+    {
+        std::vector<Gedim::UCDProperty<double>> cell0Ds_properties(2);
+
+        // etichetta del marker per sapere se il vertice appartiene al poliedro
+        cell0Ds_properties[0].Label = "FinalPolyhedron";
+        cell0Ds_properties[0].UnitLabel = "-";
+        cell0Ds_properties[0].NumComponents = 1;
+
+        // etichetta del marker per sapere se il vertice appartiene al cammino minimo
+        cell0Ds_properties[1].Label = "ShortPath";
+        cell0Ds_properties[1].UnitLabel = "-";
+        cell0Ds_properties[1].NumComponents = 1;
+
+        
+        std::vector<double> pfv(p_coll.NumCell0Ds, 0.0);
+        std::vector<double> spv(p_coll.NumCell0Ds,   0.0);
+
+        // mettiamo a 1 i marker dei vertici che appartengono al poliedro finale
+        for(const auto idv_p : p_coll.Cell3DsVertices[poly_id])
+            pfv.at(idv_p) = 1;
+
+        // mettiamo a 1 i marker dei vertici che appartengono al cammino più breve
+        for(const auto idv_sp : vertices_path)
+            spv.at(idv_sp) = 1;
+
+        cell0Ds_properties[0].Data = pfv.data();
+        cell0Ds_properties[1].Data = spv.data();
+
+        utilities.ExportPoints("./Cell0Ds.inp",
+                               p_coll.Cell0DsCoordinates,
+                               cell0Ds_properties);
+    }
+
+    {
+
+        std::vector<Gedim::UCDProperty<double>> cell1Ds_properties(2);
+
+        // etichetta del marker per sapere se il lato appartiene al poliedro
+        cell1Ds_properties[0].Label = "FinalPolyhedron";
+        cell1Ds_properties[0].UnitLabel = "-";
+        cell1Ds_properties[0].NumComponents = 1;
+
+        // etichetta del marker per sapere se il lato appartiene al cammino minimo
+        cell1Ds_properties[1].Label = "ShortPath";
+        cell1Ds_properties[1].UnitLabel = "-";
+        cell1Ds_properties[1].NumComponents = 1;
+
+        std::vector<double> pfe(p_coll.NumCell1Ds, 0.0);
+        std::vector<double> spe(p_coll.NumCell1Ds,   0.0);
+
+        // mettiamo a 1 i marker dei vertici che appartengono al poliedro finale
+        for(const auto ide_p : p_coll.Cell3DsEdges[poly_id])
+            pfe.at(ide_p) = 1;
+
+        // mettiamo a 1 i marker dei vertici che appartengono al cammino più breve
+        for(const auto ide_sp : edges_path)
+            spe.at(ide_sp) = 1;
+
+        cell1Ds_properties[0].Data = pfe.data();
+        cell1Ds_properties[1].Data = spe.data();
+
+        utilities.ExportSegments("./Cell1Ds.inp",
+                                 p_coll.Cell0DsCoordinates,
+                                 p_coll.Cell1DsEndpoints,
+                                 {},
+                                 cell1Ds_properties);
+    }
+
+    return 0;
+}

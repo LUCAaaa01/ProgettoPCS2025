@@ -1,0 +1,33 @@
+\doxysection{src/face.cpp File Reference}
+\hypertarget{face_8cpp}{}\label{face_8cpp}\index{src/face.cpp@{src/face.cpp}}
+{\ttfamily \#include "{}face.\+hpp"{}}\newline
+{\ttfamily \#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceface}{face}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceface_ae5142b5f51c4907179c54345a00ac140}{face\+::initialize}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int n\+\_\+faces)
+\begin{DoxyCompactList}\small\item\em Inizializza i valori legati alla faccia. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceface_a68252225cf440d894cd4b098336ccfe9}{face\+::reshape}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int new\+\_\+n\+\_\+faces, bool preservedata=true)
+\begin{DoxyCompactList}\small\item\em Riserva una capacità aggiuntiva al vettore di punti, lati e id della faccia. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceface_a6c2b474a50d3cc2b0958bb9154031af9}{face\+::is\+Equal}} (const std\+::vector$<$ unsigned int $>$ \&f1, const std\+::vector$<$ unsigned int $>$ \&f2)
+\begin{DoxyCompactList}\small\item\em Confronta se due facce sono uguali. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceface_aa1375ce142b12dc83c99a88bd6d8a24f}{face\+::get\+Id}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::vector$<$ unsigned int $>$ vertices\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Resistituisce l\textquotesingle{}id di una faccia dati i punti. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceface_a9ea69afb010808602c953c67d300ddab}{face\+::add}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::vector$<$ unsigned int $>$ \&new\+\_\+vertices\+\_\+id, bool checkfaceexists=true, bool should\+Print\+Face\+Exists=false)
+\begin{DoxyCompactList}\small\item\em Aggiunge una faccia, se non esiste ancora. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceface_ad04ca9d2db9373ac185d49d124cce448}{face\+::get\+Centroid}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int face\+\_\+id, bool projection=true)
+\begin{DoxyCompactList}\small\item\em Calcola il centroide di una faccia e lo memorizza ai punti esistenti. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceface_ad285dc0db2cc8aa9d8b7f155bdfcd1f7}{face\+::are\+Adjacent}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int f1\+\_\+id, unsigned int f2\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Confronta se due facce sono adiacenti. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_a9e76e3d84d7a85b791353592839f3d52}{face\+::compute\+Class\+ICharacteristic\+Triangulation}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int face\+\_\+id, unsigned int b)
+\begin{DoxyCompactList}\small\item\em Calcola la triangolazione caratterizzante la faccia dei poliedri geodetici di classe I. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_aa137876d005f6c606738dbb28b3f38ce}{face\+::compute\+Class\+IICharacteristic\+Triangulation}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int face\+\_\+id, unsigned int b)
+\begin{DoxyCompactList}\small\item\em Calcola la triangolazione caratterizzante la faccia dei poliedri geodetici di classe II. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceface_aa864f4ccc2c98938ccea74fbb9f074dd}{face\+::count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
+\begin{DoxyCompactList}\small\item\em Conta il numero di facce del solido geodetico di classe I 0 II. \end{DoxyCompactList}\end{DoxyCompactItemize}

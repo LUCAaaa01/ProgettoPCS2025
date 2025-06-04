@@ -1,0 +1,164 @@
+\doxysection{edge Namespace Reference}
+\hypertarget{namespaceedge}{}\label{namespaceedge}\index{edge@{edge}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespaceedge_a47a908e6c68ced4dfcb9e398112ca045}{initialize}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int n\+\_\+edges)
+\begin{DoxyCompactList}\small\item\em Inizializza i valori legati al lato. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceedge_a13c055253526becee8d086ec8bfd0415}{reshape}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int new\+\_\+n\+\_\+edges, bool preservedata=true)
+\begin{DoxyCompactList}\small\item\em Ridimensiona la matrice degli estremi dei lati. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespaceedge_af1721c13406d3b147160851d13c82885}{is\+Equal}} (const Eigen\+::\+Vector\+Xi \&e1, const Eigen\+::\+Vector\+Xi \&e2)
+\begin{DoxyCompactList}\small\item\em Confronta se due lati sono uguali. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2}{get\+Id}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const Eigen\+::\+Vector\+Xi \&endpoints\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Resistituisce l\textquotesingle{}id di un lato dati gli estremi. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}{add}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const Eigen\+::\+Vector2i new\+\_\+endpoints\+\_\+id, bool checkedgeexists=true, bool should\+Print\+Edge\+Exists=false)
+\begin{DoxyCompactList}\small\item\em Aggiunge un lato, se non esiste ancora. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}{length}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int edge\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Calcola la lunghezza del lato. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceedge_a05f29d2a58f045131296c434e2f74cce}{count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
+\begin{DoxyCompactList}\small\item\em Conta il numero di lati del solido geodetico di classe I e II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}\index{edge@{edge}!add@{add}}
+\index{add@{add}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680} 
+unsigned int edge\+::add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const Eigen\+::\+Vector2i}]{new\+\_\+endpoints\+\_\+id}{, }\item[{bool}]{checkedgeexists}{ = {\ttfamily true}, }\item[{bool}]{should\+Print\+Edge\+Exists}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Aggiunge un lato, se non esiste ancora. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em new\+\_\+endpoints\+\_\+id} & estremi del nuovo lato \\
+\hline
+{\em checkedgeexists} & indica se effettuare il controllo sull\textquotesingle{}esistenza del lato \\
+\hline
+{\em should\+Print\+Edge\+Exists} & indica se stampare se il lato esiste già\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna l\textquotesingle{}id del nuovo lato o di quello già esistente 
+\end{DoxyReturn}
+\Hypertarget{namespaceedge_a05f29d2a58f045131296c434e2f74cce}\index{edge@{edge}!countGeodesic@{countGeodesic}}
+\index{countGeodesic@{countGeodesic}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{countGeodesic()}{countGeodesic()}}
+{\footnotesize\ttfamily \label{namespaceedge_a05f29d2a58f045131296c434e2f74cce} 
+unsigned int edge\+::count\+Geodesic (\begin{DoxyParamCaption}\item[{unsigned int}]{q}{, }\item[{unsigned int}]{b}{, }\item[{unsigned int}]{c}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Conta il numero di lati del solido geodetico di classe I e II. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & denota il numero di vertici del poligono che si osserva guardando ciascun vertice \\
+\hline
+{\em b} & parametro di triangolazione \\
+\hline
+{\em c} & parametro di triangolazione\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna il numero di lati del solido geodetico di classe I. 
+\end{DoxyReturn}
+\Hypertarget{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2}\index{edge@{edge}!getId@{getId}}
+\index{getId@{getId}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2} 
+unsigned int edge\+::get\+Id (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const Eigen\+::\+Vector\+Xi \&}]{endpoints\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Resistituisce l\textquotesingle{}id di un lato dati gli estremi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em endpoints\+\_\+id} & estremi del lato\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna l\textquotesingle{}id del lato se esiste o la dimensione del vettore nel caso non esista 
+\end{DoxyReturn}
+\Hypertarget{namespaceedge_a47a908e6c68ced4dfcb9e398112ca045}\index{edge@{edge}!initialize@{initialize}}
+\index{initialize@{initialize}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{namespaceedge_a47a908e6c68ced4dfcb9e398112ca045} 
+void edge\+::initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{n\+\_\+edges}{}\end{DoxyParamCaption})}
+
+
+
+Inizializza i valori legati al lato. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em n\+\_\+edges} & numero di lati \\
+\hline
+\end{DoxyParams}
+\Hypertarget{namespaceedge_af1721c13406d3b147160851d13c82885}\index{edge@{edge}!isEqual@{isEqual}}
+\index{isEqual@{isEqual}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{isEqual()}{isEqual()}}
+{\footnotesize\ttfamily \label{namespaceedge_af1721c13406d3b147160851d13c82885} 
+bool edge\+::is\+Equal (\begin{DoxyParamCaption}\item[{const Eigen\+::\+Vector\+Xi \&}]{e1}{, }\item[{const Eigen\+::\+Vector\+Xi \&}]{e2}{}\end{DoxyParamCaption})}
+
+
+
+Confronta se due lati sono uguali. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e1} & estremi del primo lato \\
+\hline
+{\em e2} & estremi del secondo lato\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+indica se i lati sono uguali 
+\end{DoxyReturn}
+\Hypertarget{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}\index{edge@{edge}!length@{length}}
+\index{length@{length}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily \label{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69} 
+double edge\+::length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{edge\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Calcola la lunghezza del lato. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em edge\+\_\+id} & id del lato\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna la lunghezza del lato. 
+\end{DoxyReturn}
+\Hypertarget{namespaceedge_a13c055253526becee8d086ec8bfd0415}\index{edge@{edge}!reshape@{reshape}}
+\index{reshape@{reshape}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{reshape()}{reshape()}}
+{\footnotesize\ttfamily \label{namespaceedge_a13c055253526becee8d086ec8bfd0415} 
+void edge\+::reshape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{new\+\_\+n\+\_\+edges}{, }\item[{bool}]{preservedata}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Ridimensiona la matrice degli estremi dei lati. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em new\+\_\+n\+\_\+edges} & nuovo numero di lati \\
+\hline
+{\em preservedata} & indica se vogliamo preservare gli lati già esistenti \\
+\hline
+\end{DoxyParams}

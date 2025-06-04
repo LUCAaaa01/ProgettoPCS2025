@@ -1,0 +1,51 @@
+\doxysection{vertex.\+hpp}
+\hypertarget{vertex_8hpp_source}{}\label{vertex_8hpp_source}\index{src/vertex.hpp@{src/vertex.hpp}}
+\mbox{\hyperlink{vertex_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Eigen/Eigen"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PolyhedronCollection_8hpp}{PolyhedronCollection.hpp}}"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacevertex}{vertex}}\{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevertex_a46ef94d2af7ed6b3b40475168b2b958d}{initialize}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\_points);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacevertex_ac144fa31f5d6d5c732a5a208691bc1a3}{reshape}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ new\_n\_points,\ \textcolor{keywordtype}{bool}\ preservedata\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevertex_ad7fc132d0ab801852badca4de57e94ae}{isEqual}}(\textcolor{keyword}{const}\ Eigen::VectorXd\&\ p1,\ \textcolor{keyword}{const}\ Eigen::VectorXd\&\ p2);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacevertex_acf3b7280b86d20673c7c544bbd2b9c1d}{getId}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::VectorXd\&\ point\_coord);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespacevertex_ae1651239aed424aaa8c413b2ac01daba}{isPointOnSphere}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ point\_id);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacevertex_a3c5c350b94bda0a0c6a33bb370f225c9}{add}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::Vector3d\ new\_point,\ \textcolor{keywordtype}{bool}\ checkpointexists\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ shouldPrintVertexExists\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00085\ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacevertex_ace592e049b6afb3697c0f05df82a5953}{projectOnSphere}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ point\_id,\ \textcolor{keywordtype}{bool}\ inplace\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacevertex_a0c97c9e86292cf13588f318255c9ce64}{distance}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ p1\_id,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ p2\_id);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00108\ \ \ \ \ Eigen::VectorXd\ \mbox{\hyperlink{namespacevertex_acfbdefbe746e5cd3fc144e77b8b4eee4}{averagePoints}}\ (\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ std::vector<unsigned\ int>\&\ id\_points);}
+\DoxyCodeLine{00109\ \ \ \ \ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00121\ \ \ \ \ Eigen::VectorXd\ \mbox{\hyperlink{namespacevertex_af09cf203f91ab8147a1722536951af32}{interpolatePoints}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ p1\_id,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ p2\_id,\ \textcolor{keywordtype}{double}\ weight);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacevertex_aef9cdbc85f4b0409f699fb273aad95f1}{reflect}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ first\_endpoints,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ second\_endpoints,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ point\_to\_reflect);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacevertex_a709d4276dfa9adcc57d9e1ca21ee42b8}{countGeodesic}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ b,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c\ =\ 0);}
+\DoxyCodeLine{00147\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,41 @@
+\doxysection{src/polyhedron.hpp File Reference}
+\hypertarget{polyhedron_8hpp}{}\label{polyhedron_8hpp}\index{src/polyhedron.hpp@{src/polyhedron.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Polyhedron\+Collection.\+hpp"{}}\newline
+{\ttfamily \#include "{}vertex.\+hpp"{}}\newline
+{\ttfamily \#include "{}edge.\+hpp"{}}\newline
+{\ttfamily \#include "{}face.\+hpp"{}}\newline
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacepolyhedron}{polyhedron}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespacepolyhedron_a67fc94366dee029dba890ffbfc76e87f}{polyhedron\+::initialize}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int n\+\_\+polyhedron)
+\begin{DoxyCompactList}\small\item\em Inizializza i valori legati ai poliedri. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacepolyhedron_a61e4ba5cdc19aa887364dfd96733d7a3}{polyhedron\+::reshape}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int new\+\_\+n\+\_\+polyhedron, bool preservedata=true)
+\begin{DoxyCompactList}\small\item\em Riserva una capacità aggiuntiva al vettore di punti, lati, facce e id dei poliedri. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespacepolyhedron_a2cf17d6e19e8aacf6204d62440b05340}{polyhedron\+::is\+Equal}} (const std\+::vector$<$ unsigned int $>$ \&p1, const std\+::vector$<$ unsigned int $>$ \&p2)
+\begin{DoxyCompactList}\small\item\em Confronta se due poliedri sono uguali. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_a6b8184b3a7d5b6e50165d3f5d04ab8d5}{polyhedron\+::get\+Id}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::vector$<$ unsigned int $>$ faces\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Resistituisce l\textquotesingle{}id di un poliedro date le facce. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_ae8b1b3394aa267ceb8336d02fbf5111f}{polyhedron\+::add}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::vector$<$ unsigned int $>$ \&new\+\_\+faces\+\_\+id, bool checkpolyexists=true, bool should\+Print\+Poly\+Exists=false)
+\begin{DoxyCompactList}\small\item\em Aggiunge un poliedro, se non esiste ancora. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{namespacepolyhedron_a977a424b6e5974e8ed9520f87f58421d}{polyhedron\+::build\+\_\+platonic\+\_\+solid}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q)
+\begin{DoxyCompactList}\small\item\em Crea il solido platonico dato in input. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_aa5a9cbfadd46031995ab894830d949fd}{polyhedron\+::import\+\_\+platonic\+\_\+solid}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&prefix, unsigned int n\+\_\+vertices, unsigned int n\+\_\+edges, unsigned int n\+\_\+faces)
+\begin{DoxyCompactList}\small\item\em Identifica quale poliedro devo creare. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_ae324e9709c4966ad5b37783d650cb1d8}{polyhedron\+::create\+Dual}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, const unsigned int q)
+\begin{DoxyCompactList}\small\item\em Crea il duale del poliedro. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_adf26091abcdb8a91ff20ae64097ef095}{polyhedron\+::build\+Geodesic\+ClassI}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, unsigned int q, unsigned int b)
+\begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico di classe I. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_a8204a478f7a18773a19c5b5151f915bf}{polyhedron\+::build\+Geodesic\+Class\+II}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, unsigned int q, unsigned int b)
+\begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico di classe II. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_a4b26c613ab1ed57061d0dc8d65981f4f}{polyhedron\+::create\+Geodesic\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
+\begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespacepolyhedron_a9285ea3e8b3e7fb95268d5710376944f}{polyhedron\+::create\+Goldberg\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
+\begin{DoxyCompactList}\small\item\em Crea il poliedro di Goldberg. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacepolyhedron_ac5b053fb0a3444e65b3597e0c89b1ab3}{polyhedron\+::find\+Shortest\+Path}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, unsigned int id1, unsigned int id2, std\+::vector$<$ int $>$ \&cammino\+\_\+vertici, std\+::vector$<$ int $>$ \&cammino\+\_\+lati, bool graph\+Is\+Weighted=false)
+\begin{DoxyCompactList}\small\item\em Trova il percorso più breve (in termini di distanza) tra due vertici di un poliedro utilizzando l\textquotesingle{}algoritmo di Dijkstra. \end{DoxyCompactList}\end{DoxyCompactItemize}
