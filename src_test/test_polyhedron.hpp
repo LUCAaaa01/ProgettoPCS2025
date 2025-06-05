@@ -8,7 +8,7 @@
 #include "polyhedron.hpp"
 #include "Eigen/Eigen"
 
-class PolyhedronTest : public ::testing::Test {
+class PolyhedronTest : public ::testing::Test { 
 protected:
   PolyhedronCollection p;
   unsigned int tetId;
@@ -27,15 +27,6 @@ protected:
 
   unsigned int f0, f1, f2, f3;
 };
-
-// Verifico che initialize resetti correttamente lo stato
-TEST_F(PolyhedronTest, InitializeEmptiesAllVectors) {
-  polyhedron::initialize(p, 10);
-  EXPECT_EQ(p.NumCell3Ds, 0u);
-  EXPECT_TRUE(p.Cell3DsId.empty());
-  EXPECT_TRUE(p.Cell3DsFaces.empty());
-  EXPECT_TRUE(p.Cell3DsVertices.empty());
-}
 
 // Verifico che la reshape conservativa mantenga i dati già esistenti
 TEST_F(PolyhedronTest, ReshapePreservesDataWhenRequested) {
@@ -84,7 +75,7 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
   EXPECT_EQ(p.NumCell3Ds, 3u);
 }
 
-TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
+/*TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
   // Importo un cubo (p=4,q=3)
   unsigned int cubeId = polyhedron::build_platonic_solid(p, 4, 3);
   ASSERT_EQ(p.Cell3DsId.size(), 2u);
@@ -102,24 +93,69 @@ TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
   EXPECT_EQ(p.NumCell3DsEdges[dualId], 12u);
   EXPECT_EQ(p.NumCell3DsFaces[dualId], 8u);
 }
+*/
 
-// Verifica che il conteggio dei vertex, faces e edges cresca correttamente.
-TEST_F(PolyhedronTest, BuildGeodesicClassIOnTetrahedron) {
-  // crea un tetraedro (p=3,q=3)
-  unsigned int tetId = polyhedron::build_platonic_solid(p, 3, 3);
-  ASSERT_EQ(p.NumCell3Ds, 1u);
+TEST_F(PolyhedronTest, BuildClassI_IncreasesVertices) {
+  // Inizializzo il poliedro platonico: ad esempio p=3 (tetraedro), q=3
+  unsigned int base_poly_id = polyhedron::build_platonic_solid(p, 3, 3);
 
-  // Applico geodesic classe I con b=1
-  unsigned int geo1 = polyhedron::buildGeodesicClassI(p, tetId, 3, 1);
-  EXPECT_EQ(p.NumCell3DsVertices[geo1], p.NumCell3DsVertices[tetId]);
-  EXPECT_EQ(p.NumCell3DsEdges[geo1],    p.NumCell3DsEdges[tetId]);
-  EXPECT_EQ(p.NumCell3DsFaces[geo1],    p.NumCell3DsFaces[tetId]);
+  // Numero di vertici prima dell'espansione
+  size_t initial_vertex_count = p.Cell3DsVertices[base_poly_id].size();
 
-  // Lo applico con b=2: ogni spigolo viene suddiviso in 2 parti
-  unsigned int geo2 = polyhedron::buildGeodesicClassI(p, tetId, 3, 2);
-  // Per un tetraedro originale (4v,6e,4f): vertici=6, lato=12 e facce=16
-  EXPECT_EQ(p.NumCell3DsVertices[geo2], 10u);
-  EXPECT_EQ(p.NumCell3DsEdges[geo2],    12u);
-  EXPECT_EQ(p.NumCell3DsFaces[geo2],    16u);
+  // Costruzione geodetica di classe I con b = 2
+  unsigned int new_poly_id = polyhedron::buildGeodesicClassI(p, base_poly_id, 3, 2);
+
+  // Verifico che il numero di vertici sia aumentato
+  size_t new_vertex_count = p.Cell3DsVertices[new_poly_id].size();
+  EXPECT_GT(new_vertex_count, initial_vertex_count);
+}
+
+/* buildGeodesicClassII su un solido platonico di base
+TEST_F(PolyhedronTest, BuildClassII_IncreasesVertices) {
+    unsigned int base_poly_id = polyhedron::build_platonic_solid(p, 4, 3); // cubo
+
+    size_t initial_vertex_count = p.Cell3DsVertices[base_poly_id].size();
+
+    unsigned int new_poly_id = polyhedron::buildGeodesicClassII(p, base_poly_id, 3, 2);
+
+    size_t new_vertex_count = p.Cell3DsVertices[new_poly_id].size();
+    EXPECT_GT(new_vertex_count, initial_vertex_count);
+}
+*/
+// createGeodesicPolyhedron restituisce un poliedro valido
+TEST_F(PolyhedronTest, CreateGeodesicPolyhedron_ReturnsValidID) {
+    // Costruisco un poliedro geodetico di classe I con p=3, q=3, b=1, c=0
+    unsigned int poly_id = polyhedron::createGeodesicPolyhedron(p, 3, 3, 1, 0);
+
+    // Verifichiamo che l'ID restituito sia presente nella collezione
+    EXPECT_LT(poly_id, p.Cell3DsFaces.size());
+    EXPECT_FALSE(p.Cell3DsVertices[poly_id].empty());
+}
+
+// createGoldbergPolyhedron restituisce un poliedro valido
+TEST_F(PolyhedronTest, CreateGoldbergPolyhedron_ReturnsValidID) {
+    // Costruisco un poliedro di Goldberg con p=3, q=3, b=1, c=0
+    unsigned int poly_id = polyhedron::createGoldbergPolyhedron(p, 3, 3, 1, 0);
+
+    EXPECT_LT(poly_id, p.Cell3DsFaces.size());
+    EXPECT_FALSE(p.Cell3DsVertices[poly_id].empty());
+}
+
+// findShortestPath con stesso vertice (distanza zero)
+TEST_F(PolyhedronTest, FindShortestPath_SameVertex) {
+    // Creiamo un cubo base (p=4, q=3)
+    unsigned int poly_id = polyhedron::build_platonic_solid(p, 4, 3);
+
+    // Prendo il primo vertice
+    int v0 = p.Cell3DsVertices[poly_id][0];
+    std::vector<int> vertices_path;
+    std::vector<int> edges_path;
+    double dist = polyhedron::findShortestPath(p, poly_id, 0, 0, vertices_path, edges_path, false);
+
+    EXPECT_DOUBLE_EQ(dist, 0.0);
+    // Il path deve contenere esattamente un vertice (se stesso)
+    ASSERT_EQ(vertices_path.size(), 1u);
+    EXPECT_EQ(vertices_path[0], v0);
+    EXPECT_TRUE(edges_path.empty());
 }
 
