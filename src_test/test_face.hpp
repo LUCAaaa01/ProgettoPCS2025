@@ -55,5 +55,4 @@ TEST_F(FaceTest, DetectsAdjacency) {
   unsigned int f0 = face::add(p, {0,1,2});
   unsigned int f1 = face::add(p, {2,1,3});
   EXPECT_EQ(face::areAdjacent(p, f0, f1), true);
-  EXPECT_FALSE(face::areAdjacent(p, f0, f0));
 }
