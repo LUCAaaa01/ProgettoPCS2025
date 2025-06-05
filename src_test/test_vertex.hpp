@@ -84,3 +84,27 @@ TEST_F(VertexTest, ReshapeConservativePreservesData) {
   EXPECT_EQ(p.Cell0DsCoordinates(1,0), 2.0);
   EXPECT_EQ(p.Cell0DsCoordinates(2,0), 3.0);
 }
+
+TEST_F(VertexTest, SimpleReflection) {
+    p.Cell0DsId = {0u, 1u, 2u};
+    p.Cell0DsCoordinates.resize(3, 4);
+    p.Cell0DsCoordinates.col(0) = Eigen::Vector3d(0.0, 0.0, 0.0);
+    p.Cell0DsCoordinates.col(1) = Eigen::Vector3d(2.0, 0.0, 0.0);
+    p.Cell0DsCoordinates.col(2) = Eigen::Vector3d(3.0, 0.0, 0.0);
+    p.NumCell0Ds = 3;
+    // Mi aspetto che il punto riflesso sia (-1,0,0)
+    unsigned int new_id = vertex::reflect(p,0u,1u,2u);
+    
+    // Il nuovo ID dovrebbe essere 3 (successivo a 0,1,2)
+    EXPECT_EQ(new_id, 3u);
+
+    // Verifico che l'id 3 sia stato aggiunto a Cell0DsId
+    ASSERT_TRUE(contains(p.Cell0DsId, new_id));
+
+    // Verifico la coordinata calcolata
+    Eigen::Vector3d expected(-1.0, 0.0, 0.0);
+    Eigen::Vector3d actual = p.Cell0DsCoordinates.col(new_id);
+    EXPECT_DOUBLE_EQ(actual.x(), expected.x());
+    EXPECT_DOUBLE_EQ(actual.y(), expected.y());
+    EXPECT_DOUBLE_EQ(actual.z(), expected.z());
+}
