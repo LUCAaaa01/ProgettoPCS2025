@@ -58,3 +58,4 @@ TEST_F(EdgeTest, ReshapeNonConservativeClearsOrAdjusts) {
   EXPECT_EQ(p.NumCell1Ds, 0u);
   EXPECT_EQ(p.Cell1DsEndpoints.cols(), 2);
 }
+
