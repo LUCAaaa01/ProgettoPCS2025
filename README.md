@@ -3,7 +3,6 @@
 ### Obiettivo del progetto
  * Il codice ha lo scopo di rappresentare in modo efficiente e modulare una struttura dati per poliedri
  * (geodetici, di Goldberg, ecc.), gestendone vertici, lati, facce e celle 3D.
- *
 ### Struttura dati principale
  * Tutti i dati sono contenuti in una sola struct: `PolyhedronCollection`, che include:
  * - una lista di vertici (0D)
