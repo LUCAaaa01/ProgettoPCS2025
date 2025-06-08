@@ -30,8 +30,9 @@ Tutti i dati sono contenuti in una sola struct: `PolyhedronCollection`, che incl
  ### Esempio d'uso consigliato
   ```cpp
   PolyhedronCollection p_coll;
-  vertex::add(p_coll, 1.0, 0.0, 0.0);          // Aggiunge un vertice
-  face::add(p_coll, {v0, v1, v2});             // Aggiunge una faccia specificando solo i vertici
+  unsigned int vertex_id, face_id;
+  vertex_id = vertex::add(p_coll, Eigen::Vector3d(x, y, z));             // Aggiunge un vertice
+  face_id = face::add(p_coll, vertIds);             // Aggiunge una faccia specificando solo i vertici
   ```
  
  ### Nota sulla sicurezza
