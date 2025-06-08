@@ -30,12 +30,16 @@ int main(int argc, char* argv[]){
     unsigned int poly_id;
     bool graphIsWeighted = true;
     if(p == 3){
+        std::cout << "Creazione del poliedro geodetico ... " << std::endl;
         poly_id = polyhedron::createGeodesicPolyhedron(p_coll, p, q, b, c);
+        std::cout << "Poliedro geodetico creato!" << std::endl;
         graphIsWeighted = false;
     }
-    else
+    else{
+        std::cout << "Creazione del poliedro di Goldberg ... " << std::endl;
         poly_id = polyhedron::createGoldbergPolyhedron(p_coll, p, q, b, c);
-
+        std::cout << "Poliedro di Goldberg creato!" << std::endl;
+    }
     
     //creiamo se richiesto lo shortest path
     std::vector<int> vertices_path = {};
@@ -44,13 +48,30 @@ int main(int argc, char* argv[]){
     if(argc == 7){
         unsigned int id1 = std::stoul(argv[5]);
         unsigned int id2 = std::stoul(argv[6]);
+        while((!contains(p_coll.Cell3DsVertices[poly_id], id1) || !contains(p_coll.Cell3DsVertices[poly_id], id2))){
+            std::cout << "Sembra ci sia un errore con i vertici che hai inserito! Questi potrebbero non appartenere al poliedro o non esistere." << std::endl;
+            std::cout << "I vertici che appartengono al poliedro sono: " << std::endl;
+            for(const auto vertice_id : p_coll.Cell3DsVertices[poly_id])
+                std::cout << vertice_id << " - ";
+            std::cout << std::endl;
+
+            std::cout << "Inserire l'id del vertice di partenza: ";
+            std::cin >> id1;
+            std::cout << "Inserire l'id del vertice di arrivo: ";
+            std::cin >> id2;
+        }
+
+        std::cout << "Cerco il cammino migliore tra il vertice con id " << id1 << " e il vertice con id " << id2 << " ..." << std::endl;
         double distance_path = polyhedron::findShortestPath(p_coll, poly_id, id1, id2, vertices_path, edges_path, graphIsWeighted);
+        std::cout << "Cammino trovato!" << std::endl;
+
 
         // Stampo informazioni del cammino
         std::cout << "Lunghezza complessiva del cammino: " << distance_path << std::endl;
         std::cout << "Numero di lati nel cammino minimo: " << edges_path.size() << std::endl;
     }
 
+    std::cout << "Esportazione dei poliedri creati in corso ... " << std::endl;
     Gedim::UCDUtilities utilities;
     {
         std::vector<Gedim::UCDProperty<double>> cell0Ds_properties(2);
@@ -119,6 +140,7 @@ int main(int argc, char* argv[]){
                                  {},
                                  cell1Ds_properties);
     }
+    std::cout << "Esportazione completata correttamente!" << std::endl;
 
     return 0;
 }

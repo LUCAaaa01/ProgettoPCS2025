@@ -7,9 +7,12 @@ namespace face{
     void initialize(PolyhedronCollection& p_coll, unsigned int n_faces){
         // inizializza le variabili legate alle facce
         p_coll.NumCell2Ds = 0;
-        p_coll.Cell2DsId = {};
-        p_coll.NumCell2DsVertices = {};
-        p_coll.NumCell2DsEdges = {};
+        p_coll.Cell2DsId.clear();
+        p_coll.NumCell2DsVertices.clear();
+        p_coll.NumCell2DsEdges.clear();
+        p_coll.Cell2DsVertices.clear();
+        p_coll.Cell2DsEdges.clear();
+
         p_coll.Cell2DsId.reserve(n_faces); // riserva una capacità di n_faces per gli id delle facce
         p_coll.Cell2DsVertices.reserve(n_faces); // riserva una capacità di n_faces per memorizzare vettori di punti
         p_coll.Cell2DsEdges.reserve(n_faces); // riserva una capacità di n_faces per memorizzare vettori di lati
@@ -146,6 +149,11 @@ namespace face{
     }
 
     std::vector<unsigned int> computeClassICharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b){
+        // alcuni controlli dell'input
+        assert(contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
+        assert((p_coll.Cell2DsVertices[face_id].size() == 3) && "Errore! La faccia non ha 3 vertici! Non è possibile fare la triangolazione.");
+        assert((b > 0) && "Errore!Il parametro b deve essere > 0!");
+
         // i vertici delle facce sono stati memorizzati in ordine di memorizzazione (dal meno recente al più recente)
         std::vector<unsigned int> new_faces_id = {};
 
@@ -176,6 +184,11 @@ namespace face{
     }
 
     std::vector<unsigned int> computeClassIICharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b){
+        // alcuni controlli dell'input
+        assert(contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
+        assert((p_coll.Cell2DsVertices[face_id].size() == 3) && "Errore! La faccia non ha 3 vertici! Non è possibile fare la triangolazione.");
+        assert((b > 0) && "Errore!Il parametro b deve essere > 0!");
+
         // creiamo la triangolazione di primo tipo della faccia
         std::vector<unsigned int> faces_I_id = computeClassICharacteristicTriangulation(p_coll, face_id, b);
         std::vector<unsigned int> faces_id = {};

@@ -75,7 +75,7 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
   EXPECT_EQ(p.NumCell3Ds, 3u);
 }
 
-/*TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
+TEST_F(PolyhedronTest, CreateDualOfCubeYieldsOctahedron) {
   // Importo un cubo (p=4,q=3)
   unsigned int cubeId = polyhedron::build_platonic_solid(p, 4, 3);
   ASSERT_EQ(p.Cell3DsId.size(), 2u);
@@ -93,7 +93,6 @@ TEST_F(PolyhedronTest, AddCreatesNewIfCheckDisabled) {
   EXPECT_EQ(p.NumCell3DsEdges[dualId], 12u);
   EXPECT_EQ(p.NumCell3DsFaces[dualId], 8u);
 }
-*/
 
 TEST_F(PolyhedronTest, BuildClassI_IncreasesVertices) {
   // Inizializzo il poliedro platonico: ad esempio p=3 (tetraedro), q=3
@@ -110,18 +109,18 @@ TEST_F(PolyhedronTest, BuildClassI_IncreasesVertices) {
   EXPECT_GT(new_vertex_count, initial_vertex_count);
 }
 
-/* buildGeodesicClassII su un solido platonico di base
+//buildGeodesicClassII su un solido platonico di base
 TEST_F(PolyhedronTest, BuildClassII_IncreasesVertices) {
-    unsigned int base_poly_id = polyhedron::build_platonic_solid(p, 4, 3); // cubo
+    unsigned int base_poly_id = polyhedron::build_platonic_solid(p, 3, 4); // ottaedro
 
     size_t initial_vertex_count = p.Cell3DsVertices[base_poly_id].size();
 
-    unsigned int new_poly_id = polyhedron::buildGeodesicClassII(p, base_poly_id, 3, 2);
+    unsigned int new_poly_id = polyhedron::buildGeodesicClassII(p, base_poly_id, 4, 2);
 
     size_t new_vertex_count = p.Cell3DsVertices[new_poly_id].size();
     EXPECT_GT(new_vertex_count, initial_vertex_count);
 }
-*/
+
 // createGeodesicPolyhedron restituisce un poliedro valido
 TEST_F(PolyhedronTest, CreateGeodesicPolyhedron_ReturnsValidID) {
     // Costruisco un poliedro geodetico di classe I con p=3, q=3, b=1, c=0

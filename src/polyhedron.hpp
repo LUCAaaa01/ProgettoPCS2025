@@ -136,9 +136,9 @@ namespace polyhedron{
    * @param b parametro di triangolazione
    * @param c 
    * 
-   * @return ritorna l'id del poliedro 
+   * @return ritorna l'id del poliedro (-1 se dà errore)
    */
-   unsigned int createGeodesicPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c);
+   int createGeodesicPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c);
 
 
    /**
@@ -150,9 +150,9 @@ namespace polyhedron{
    * @param b parametro di triangolazione
    * @param c 
    * 
-   * @return ritorna l'id del poliedro 
+   * @return ritorna l'id del poliedro (-1 se dà errore)
    */
-   unsigned int createGoldbergPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c);
+   int createGoldbergPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c);
 
 
    /**

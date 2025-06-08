@@ -3,6 +3,7 @@
 #include "test_vertex.hpp"
 #include "test_edge.hpp"
 #include "test_face.hpp"
+#include "test_polyhedron.hpp"
 
 int main(int argc, char *argv[])
 {

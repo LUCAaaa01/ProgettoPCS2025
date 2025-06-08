@@ -1,0 +1,10 @@
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/CMakeFiles/PolyhedronCollection.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/CMakeFiles/PolyhedronCollection_TEST.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/CMakeFiles/edit_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/CMakeFiles/rebuild_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/src/CMakeFiles/edit_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/src/CMakeFiles/rebuild_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/ExportParaview/CMakeFiles/edit_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/ExportParaview/CMakeFiles/rebuild_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/src_test/CMakeFiles/edit_cache.dir
+/home/appuser/Data/my_github/ProgettoPCS2025/Debug/src_test/CMakeFiles/rebuild_cache.dir

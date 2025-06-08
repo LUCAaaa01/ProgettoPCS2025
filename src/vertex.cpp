@@ -7,7 +7,7 @@ namespace vertex{
     void initialize(PolyhedronCollection& p_coll, unsigned int n_points){
         // inizializziamo le variabili legate ai punti
         p_coll.NumCell0Ds = 0;
-        p_coll.Cell0DsId = {};
+        p_coll.Cell0DsId.clear();
         p_coll.Cell0DsId.reserve(n_points); // riserva una capacità di n_points
         p_coll.Cell0DsCoordinates = Eigen::MatrixXd::Zero(3, n_points); //creo una matrice 3xNumeroPunti
     }

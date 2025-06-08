@@ -8,10 +8,14 @@ namespace polyhedron{
     void initialize(PolyhedronCollection& p_coll, unsigned int n_polyhedron){
         // inizializza le variabili legate ai poliedri
         p_coll.NumCell3Ds = 0;
-        p_coll.Cell3DsId = {};
-        p_coll.NumCell3DsVertices = {};
-        p_coll.NumCell3DsEdges = {};
-        p_coll.NumCell3DsFaces = {};
+        p_coll.Cell3DsId.clear();
+        p_coll.NumCell3DsVertices.clear();
+        p_coll.NumCell3DsEdges.clear();
+        p_coll.NumCell3DsFaces.clear();
+        p_coll.Cell3DsVertices.clear();
+        p_coll.Cell3DsEdges.clear();
+        p_coll.Cell3DsFaces.clear();
+
         p_coll.Cell3DsId.reserve(n_polyhedron); // riserva una capacità di n_polyhedron per gli id dei poliedri
         p_coll.Cell3DsVertices.reserve(n_polyhedron); // riserva una capacità di n_polyhedron per memorizzare vettori di punti
         p_coll.Cell3DsEdges.reserve(n_polyhedron); // riserva una capacità di n_polyhedron per memorizzare vettori di lati
@@ -180,7 +184,6 @@ namespace polyhedron{
 
         else if (p==3 && q==4) { //creiamo l'ottaedro come duale del cubo
             poly_id = import_platonic_solid(p_coll, "cube", 8, 12, 6);
-            std::cout << "Cubo creato" << std::endl;
             poly_id = createDual(p_coll, poly_id, p);
         }
 
@@ -197,6 +200,9 @@ namespace polyhedron{
     }
 
     unsigned int createDual(PolyhedronCollection& p_coll, unsigned int poly_id, const unsigned int q){
+        // alcuni controlli sull'input
+        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+
         unsigned int new_n_vertices = p_coll.Cell3DsFaces[poly_id].size();
         unsigned int new_n_faces = p_coll.Cell3DsVertices[poly_id].size();
     
@@ -258,6 +264,9 @@ namespace polyhedron{
     }
 
     unsigned int buildGeodesicClassI(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int q, unsigned int b){
+        // alcuni controlli sull'input
+        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+
         // effettuiamo la reshape dei vertici, lati e facce
         vertex::reshape(p_coll, p_coll.Cell0DsId.capacity() + vertex::countGeodesic(q, b));
         edge::reshape(p_coll, p_coll.Cell1DsId.capacity() + edge::countGeodesic(q, b));
@@ -282,6 +291,9 @@ namespace polyhedron{
     }
 
     unsigned int buildGeodesicClassII(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int q, unsigned int b){
+        // alcuni controlli sull'input
+        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+
         // effettuiamo la reshape dei vertici, lati e facce
         vertex::reshape(p_coll, p_coll.Cell0DsId.capacity() + vertex::countGeodesic(q, b, 0) + vertex::countGeodesic(q, b, b));
         edge::reshape(p_coll, p_coll.Cell1DsId.capacity() + edge::countGeodesic(q, b, 0) + edge::countGeodesic(q, b, b));
@@ -305,38 +317,41 @@ namespace polyhedron{
         return pid;
     }
     
-    unsigned int createGeodesicPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c){
+    int createGeodesicPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c){
         initialize(p_coll, 2);
         //costruiamo il solido platonico
-        unsigned int poly_id = build_platonic_solid(p_coll, p, q);
-        // costruiamo il poliedro geodetico
-        if(c == 0)
-            poly_id = buildGeodesicClassI(p_coll, poly_id, q, b);
-        else
-            poly_id = buildGeodesicClassII(p_coll, poly_id, q, b);
+        int poly_id = build_platonic_solid(p_coll, p, q);
+        if(poly_id == -1)
+            std::cout << "Errore! Non è stato possibile creare il solido platonico!" << std::endl;
+        else{
+            // costruiamo il poliedro geodetico
+            if(c == 0)
+                poly_id = buildGeodesicClassI(p_coll, poly_id, q, b);
+            else
+                poly_id = buildGeodesicClassII(p_coll, poly_id, q, b);
+            }
 
         return poly_id;
     }
     
     
-    unsigned int createGoldbergPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c){
-        initialize(p_coll, 3);
-
-        // costruiamo il duale del poliedro (che ha le facce triangolari) (inverto p e q)
-        unsigned int poly_id = build_platonic_solid(p_coll, q, p);
-
-        // costruiamo il poliedro geodetico (del duale)
-        if(c == 0)
-            poly_id = buildGeodesicClassI(p_coll, poly_id, p, b);
-        else
-            poly_id = buildGeodesicClassII(p_coll, poly_id, p, b);
-
-        // creiamo il duale (del duale)
-        return createDual(p_coll, poly_id, p);
+    int createGoldbergPolyhedron(PolyhedronCollection& p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c){
+        int poly_id = createGeodesicPolyhedron(p_coll, q, p, b, c);
+        if(poly_id != -1){
+            reshape(p_coll, 3);
+             // creiamo il duale (del duale)
+            poly_id = createDual(p_coll, poly_id, p);
+        }
+        return poly_id;
     }
 
     double findShortestPath(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int id1, unsigned int id2, 
         std::vector<int>& vertices_path, std::vector<int>& edges_path, bool graphIsWeighted){
+        
+        // alcuni controlli sull'input
+        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+        assert((contains(p_coll.Cell3DsVertices[poly_id], id1) && contains(p_coll.Cell3DsVertices[poly_id], id2)) &&
+                "Errore! Gli id scelgono non esistono o non appartengono al poliedro!");
 
         std::map<int, int> id_to_index; // Mappa: ID reale -> indice interno
         std::vector<int> index_to_id;   // Mappa inversa: indice interno -> ID reale
@@ -374,8 +389,8 @@ namespace polyhedron{
         // applichiamo l'algoritmo di Dijkstra utilizzando una coda con priorità
         using P = std::pair<double,int>;
         std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
-        dist[id1] = 0.0;
-        pq.emplace(0.0, id1); //aggiungiamo alla coda il nodo sorgente con distanza 0 (da se stesso)
+        dist[id_to_index[id1]] = 0.0;
+        pq.emplace(0.0, id_to_index[id1]); //aggiungiamo alla coda il nodo sorgente con distanza 0 (da se stesso)
 
         while (!pq.empty()) {
             //estriamo il primo elemento
@@ -387,7 +402,7 @@ namespace polyhedron{
                 continue; // salta questa iterazione
 
             // controlliamo se il vertice u è quello di destinazione
-            if (u == id2) 
+            if (u == id_to_index[id2]) 
             break;  // abbiamo già trovato la distanza minima per id2
 
             // per ogni vertice adiacente a u
@@ -417,7 +432,7 @@ namespace polyhedron{
         // costruiamo il percorso
     
         // risaliamo dai predecessori per ricostruire i vettori di cammino
-        for (int v = id2; v != -1; v = prevV[v]) {
+        for (int v = id_to_index[id2]; v != -1; v = prevV[v]) {
             vertices_path.push_back(index_to_id[v]);
             if (prevE[v] != -1) 
                 edges_path.push_back(prevE[v]);
@@ -427,7 +442,7 @@ namespace polyhedron{
         std::reverse(vertices_path.begin(), vertices_path.end());
         std::reverse(edges_path.begin(),    edges_path.end());
 
-        return dist[id2];
+        return dist[id_to_index[id2]];
     }
             
 }

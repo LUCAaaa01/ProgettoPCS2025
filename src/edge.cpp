@@ -4,7 +4,7 @@ namespace edge{
     void initialize(PolyhedronCollection& p_coll, unsigned int n_edges){
         // inizializza le variabili legati ai lati
         p_coll.NumCell1Ds = 0;
-        p_coll.Cell1DsId = {};
+        p_coll.Cell1DsId.clear();
         p_coll.Cell1DsId.reserve(n_edges); // riserva una capacità di n_edges
         p_coll.Cell1DsEndpoints = Eigen::MatrixXi(2, n_edges); //creo una matrice 2xNumeroLati (fromPointId - toPointId)
     }
