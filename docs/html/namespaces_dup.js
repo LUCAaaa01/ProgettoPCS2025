@@ -3,6 +3,7 @@ var namespaces_dup =
     [ "edge", "namespaceedge.html", [
       [ "add", "namespaceedge.html#a5a9719f0bbc68ead2b9c1320481af680", null ],
       [ "countGeodesic", "namespaceedge.html#a05f29d2a58f045131296c434e2f74cce", null ],
+      [ "exportTxt", "namespaceedge.html#a0361540bc1c9a7c1eda9038dbf75150a", null ],
       [ "getId", "namespaceedge.html#a785c3c0689c7094cea25fc07c278d6f2", null ],
       [ "initialize", "namespaceedge.html#a47a908e6c68ced4dfcb9e398112ca045", null ],
       [ "isEqual", "namespaceedge.html#af1721c13406d3b147160851d13c82885", null ],
@@ -15,6 +16,7 @@ var namespaces_dup =
       [ "computeClassICharacteristicTriangulation", "namespaceface.html#a9e76e3d84d7a85b791353592839f3d52", null ],
       [ "computeClassIICharacteristicTriangulation", "namespaceface.html#aa137876d005f6c606738dbb28b3f38ce", null ],
       [ "countGeodesic", "namespaceface.html#aa864f4ccc2c98938ccea74fbb9f074dd", null ],
+      [ "exportTxt", "namespaceface.html#accb2d328219b6792b480a459e3cbe1ce", null ],
       [ "getCentroid", "namespaceface.html#ad04ca9d2db9373ac185d49d124cce448", null ],
       [ "getId", "namespaceface.html#aa1375ce142b12dc83c99a88bd6d8a24f", null ],
       [ "initialize", "namespaceface.html#ae5142b5f51c4907179c54345a00ac140", null ],
@@ -27,8 +29,9 @@ var namespaces_dup =
       [ "buildGeodesicClassI", "namespacepolyhedron.html#adf26091abcdb8a91ff20ae64097ef095", null ],
       [ "buildGeodesicClassII", "namespacepolyhedron.html#a8204a478f7a18773a19c5b5151f915bf", null ],
       [ "createDual", "namespacepolyhedron.html#ae324e9709c4966ad5b37783d650cb1d8", null ],
-      [ "createGeodesicPolyhedron", "namespacepolyhedron.html#a4b26c613ab1ed57061d0dc8d65981f4f", null ],
-      [ "createGoldbergPolyhedron", "namespacepolyhedron.html#a9285ea3e8b3e7fb95268d5710376944f", null ],
+      [ "createGeodesicPolyhedron", "namespacepolyhedron.html#a255d5d55dc1aebc320766e1dda283c5a", null ],
+      [ "createGoldbergPolyhedron", "namespacepolyhedron.html#a1c734ce39b16fe565f6d6f270f135811", null ],
+      [ "exportTxt", "namespacepolyhedron.html#a7c2c5fc5467d69e3e156acdf7c002fbe", null ],
       [ "findShortestPath", "namespacepolyhedron.html#ac5b053fb0a3444e65b3597e0c89b1ab3", null ],
       [ "getId", "namespacepolyhedron.html#a6b8184b3a7d5b6e50165d3f5d04ab8d5", null ],
       [ "import_platonic_solid", "namespacepolyhedron.html#aa5a9cbfadd46031995ab894830d949fd", null ],
@@ -36,11 +39,17 @@ var namespaces_dup =
       [ "isEqual", "namespacepolyhedron.html#a2cf17d6e19e8aacf6204d62440b05340", null ],
       [ "reshape", "namespacepolyhedron.html#a61e4ba5cdc19aa887364dfd96733d7a3", null ]
     ] ],
+    [ "utils", "namespaceutils.html", [
+      [ "contains", "namespaceutils.html#a07defdbf95cfaa171dfc9ab704e4319c", null ],
+      [ "exportToTxt", "namespaceutils.html#a5de0f54721eb55908b67a695b89798ca", null ],
+      [ "factorial", "namespaceutils.html#adfb63641f8a119bb24f5bd9ecc85f35b", null ]
+    ] ],
     [ "vertex", "namespacevertex.html", [
       [ "add", "namespacevertex.html#a3c5c350b94bda0a0c6a33bb370f225c9", null ],
       [ "averagePoints", "namespacevertex.html#acfbdefbe746e5cd3fc144e77b8b4eee4", null ],
       [ "countGeodesic", "namespacevertex.html#a709d4276dfa9adcc57d9e1ca21ee42b8", null ],
       [ "distance", "namespacevertex.html#a0c97c9e86292cf13588f318255c9ce64", null ],
+      [ "exportTxt", "namespacevertex.html#ad0cd6428b19431365dd3684592f692c3", null ],
       [ "getId", "namespacevertex.html#acf3b7280b86d20673c7c544bbd2b9c1d", null ],
       [ "initialize", "namespacevertex.html#a46ef94d2af7ed6b3b40475168b2b958d", null ],
       [ "interpolatePoints", "namespacevertex.html#af09cf203f91ab8147a1722536951af32", null ],

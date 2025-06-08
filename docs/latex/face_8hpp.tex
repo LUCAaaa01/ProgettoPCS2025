@@ -1,6 +1,7 @@
 \doxysection{src/face.hpp File Reference}
 \hypertarget{face_8hpp}{}\label{face_8hpp}\index{src/face.hpp@{src/face.hpp}}
 {\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}utils.\+hpp"{}}\newline
 {\ttfamily \#include "{}vertex.\+hpp"{}}\newline
 {\ttfamily \#include "{}edge.\+hpp"{}}\newline
 {\ttfamily \#include "{}Polyhedron\+Collection.\+hpp"{}}\newline
@@ -31,4 +32,6 @@ std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_a9e76e3d84d7a85
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_aa137876d005f6c606738dbb28b3f38ce}{face\+::compute\+Class\+IICharacteristic\+Triangulation}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int face\+\_\+id, unsigned int b)
 \begin{DoxyCompactList}\small\item\em Calcola la triangolazione caratterizzante la faccia dei poliedri geodetici di classe II. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespaceface_aa864f4ccc2c98938ccea74fbb9f074dd}{face\+::count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
-\begin{DoxyCompactList}\small\item\em Conta il numero di facce del solido geodetico di classe I 0 II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Conta il numero di facce del solido geodetico di classe I 0 II. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceface_accb2d328219b6792b480a459e3cbe1ce}{face\+::export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta le facce in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}

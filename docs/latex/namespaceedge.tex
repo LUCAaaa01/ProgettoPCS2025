@@ -16,7 +16,9 @@ unsigned int \mbox{\hyperlink{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}{a
 double \mbox{\hyperlink{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}{length}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int edge\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Calcola la lunghezza del lato. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespaceedge_a05f29d2a58f045131296c434e2f74cce}{count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
-\begin{DoxyCompactList}\small\item\em Conta il numero di lati del solido geodetico di classe I e II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Conta il numero di lati del solido geodetico di classe I e II. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceedge_a0361540bc1c9a7c1eda9038dbf75150a}{export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta i lati in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -66,6 +68,23 @@ Conta il numero di lati del solido geodetico di classe I e II.
 \begin{DoxyReturn}{Returns}
 ritorna il numero di lati del solido geodetico di classe I. 
 \end{DoxyReturn}
+\Hypertarget{namespaceedge_a0361540bc1c9a7c1eda9038dbf75150a}\index{edge@{edge}!exportTxt@{exportTxt}}
+\index{exportTxt@{exportTxt}!edge@{edge}}
+\doxysubsubsection{\texorpdfstring{exportTxt()}{exportTxt()}}
+{\footnotesize\ttfamily \label{namespaceedge_a0361540bc1c9a7c1eda9038dbf75150a} 
+void edge\+::export\+Txt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const std\+::string \&}]{path}{ = {\ttfamily "{}./"{}}}\end{DoxyParamCaption})}
+
+
+
+Esporta i lati in un file txt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em path} & percorso della cartella in cui si vuole salvare il file \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2}\index{edge@{edge}!getId@{getId}}
 \index{getId@{getId}!edge@{edge}}
 \doxysubsubsection{\texorpdfstring{getId()}{getId()}}

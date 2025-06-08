@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+#include "utils.hpp"
 #include "PolyhedronCollection.hpp"
 #include "vertex.hpp"
 #include "edge.hpp"
@@ -170,5 +172,14 @@ namespace polyhedron{
    */
    double findShortestPath(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int id1, unsigned int id2, 
     std::vector<int>& cammino_vertici, std::vector<int>& cammino_lati, bool graphIsWeighted = false);
+
+
+    /**
+    * @brief Esporta i poliedri in un file txt
+    * 
+    * @param p_coll oggetto di PolyhedronCollection
+    * @param path percorso della cartella in cui si vuole salvare il file
+    */ 
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path = "./");
 
 }

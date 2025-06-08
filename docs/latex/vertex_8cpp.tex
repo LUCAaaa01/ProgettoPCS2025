@@ -1,6 +1,8 @@
 \doxysection{src/vertex.cpp File Reference}
 \hypertarget{vertex_8cpp}{}\label{vertex_8cpp}\index{src/vertex.cpp@{src/vertex.cpp}}
 {\ttfamily \#include "{}vertex.\+hpp"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
 \doxysubsubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,7 +34,9 @@ Eigen\+::\+Vector\+Xd \mbox{\hyperlink{namespacevertex_af09cf203f91ab8147a172253
 unsigned int \mbox{\hyperlink{namespacevertex_aef9cdbc85f4b0409f699fb273aad95f1}{vertex\+::reflect}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int first\+\_\+endpoints, unsigned int second\+\_\+endpoints, unsigned int point\+\_\+to\+\_\+reflect)
 \begin{DoxyCompactList}\small\item\em Calcola il punto riflesso di un segmento. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespacevertex_a709d4276dfa9adcc57d9e1ca21ee42b8}{vertex\+::count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
-\begin{DoxyCompactList}\small\item\em Conta il numero di vertici del solido geodetico di classe I e II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Conta il numero di vertici del solido geodetico di classe I e II. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacevertex_ad0cd6428b19431365dd3684592f692c3}{vertex\+::export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta i vertici in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 

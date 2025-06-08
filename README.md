@@ -17,6 +17,7 @@ Tutti i dati sono contenuti in una sola struct: `PolyhedronCollection`, che incl
  - `edge::` per i lati
  - `face::` per le facce
  - `polyhedron::` per i poliedri
+ - `utils::` per le funzioni generiche legate alla struttura PolyhedronCollection
  
  Ogni namespace gestisce **solo i dati di sua competenza**.
  Tutte le modifiche o letture a `PolyhedronCollection` dovrebbero avvenire attraverso le funzioni nei namespace.

@@ -1,4 +1,6 @@
 #include "edge.hpp"
+#include <string>
+#include <fstream>
 
 namespace edge{
     void initialize(PolyhedronCollection& p_coll, unsigned int n_edges){
@@ -71,7 +73,7 @@ namespace edge{
 
     double length(PolyhedronCollection& p_coll, unsigned int edge_id){
         // controlliamo che l'id del lato esista
-        assert(contains(p_coll.Cell1DsId, edge_id) && "Lato non esistente! Impossibile effettuare l'operazione richiesta.");
+        assert(utils::contains(p_coll.Cell1DsId, edge_id) && "Lato non esistente! Impossibile effettuare l'operazione richiesta.");
 
         // calcolo la distanza tra gli estremi
         return vertex::distance(p_coll, p_coll.Cell1DsEndpoints(0, edge_id), p_coll.Cell1DsEndpoints(1, edge_id));
@@ -101,5 +103,16 @@ namespace edge{
                 break;
         }
         return n_edges;
+    }
+
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path){
+        std::ofstream f(path + "Cell1Ds.txt");
+        f << "id v0 v1\n";
+        for (unsigned int i = 0; i < p_coll.NumCell1Ds; ++i) { 
+            //estrae gli ID dei due vertici estremi della matrice Cell1DsExtrema
+            int v0 = p_coll.Cell1DsEndpoints(0, i);
+            int v1 = p_coll.Cell1DsEndpoints(1, i);
+            f << i << " " << v0 << " " << v1 <<  "\n";
+        }
     }
 }

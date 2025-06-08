@@ -201,7 +201,7 @@ namespace polyhedron{
 
     unsigned int createDual(PolyhedronCollection& p_coll, unsigned int poly_id, const unsigned int q){
         // alcuni controlli sull'input
-        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+        assert((utils::contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
 
         unsigned int new_n_vertices = p_coll.Cell3DsFaces[poly_id].size();
         unsigned int new_n_faces = p_coll.Cell3DsVertices[poly_id].size();
@@ -265,7 +265,7 @@ namespace polyhedron{
 
     unsigned int buildGeodesicClassI(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int q, unsigned int b){
         // alcuni controlli sull'input
-        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+        assert((utils::contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
 
         // effettuiamo la reshape dei vertici, lati e facce
         vertex::reshape(p_coll, p_coll.Cell0DsId.capacity() + vertex::countGeodesic(q, b));
@@ -292,7 +292,7 @@ namespace polyhedron{
 
     unsigned int buildGeodesicClassII(PolyhedronCollection& p_coll, unsigned int poly_id, unsigned int q, unsigned int b){
         // alcuni controlli sull'input
-        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+        assert((utils::contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
 
         // effettuiamo la reshape dei vertici, lati e facce
         vertex::reshape(p_coll, p_coll.Cell0DsId.capacity() + vertex::countGeodesic(q, b, 0) + vertex::countGeodesic(q, b, b));
@@ -349,8 +349,8 @@ namespace polyhedron{
         std::vector<int>& vertices_path, std::vector<int>& edges_path, bool graphIsWeighted){
         
         // alcuni controlli sull'input
-        assert((contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
-        assert((contains(p_coll.Cell3DsVertices[poly_id], id1) && contains(p_coll.Cell3DsVertices[poly_id], id2)) &&
+        assert((utils::contains(p_coll.Cell3DsId, poly_id)) && "Errore! L'id del poliedro non è valido!");
+        assert((utils::contains(p_coll.Cell3DsVertices[poly_id], id1) && utils::contains(p_coll.Cell3DsVertices[poly_id], id2)) &&
                 "Errore! Gli id scelgono non esistono o non appartengono al poliedro!");
 
         std::map<int, int> id_to_index; // Mappa: ID reale -> indice interno
@@ -443,6 +443,24 @@ namespace polyhedron{
         std::reverse(edges_path.begin(),    edges_path.end());
 
         return dist[id_to_index[id2]];
+    }
+
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path){
+        std::ofstream f(path + "Cell3Ds.txt");
+        f << "id numVertices vertices numEdges edges numFaces faces\n"; //scrive intestazione per unico poliedro
+        for (unsigned i = 0; i < p_coll.NumCell3Ds; ++i) { //prende id di vertici lati e facce
+            auto const &verts = p_coll.Cell3DsVertices[i];
+            auto const &edges = p_coll.Cell3DsEdges[i];
+            auto const &faces = p_coll.Cell3DsFaces[i];
+            f << i << " " << verts.size();
+            for (auto v : verts)  f << " " << v;
+            f << " " << edges.size();
+            for (auto e : edges) f << " " << e;
+            f << " " << faces.size();
+            for (auto f2 : faces) f << " " << f2;
+            f << "\n";
+        }
+
     }
             
 }

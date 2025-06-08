@@ -5,31 +5,35 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <iostream>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vertex_8hpp}{vertex.hpp}}"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PolyhedronCollection_8hpp}{PolyhedronCollection.hpp}}"{}}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceedge}{edge}}\{}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceedge_a47a908e6c68ced4dfcb9e398112ca045}{initialize}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\_edges);}
-\DoxyCodeLine{00016\ \ \ \ \ }
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceedge_a13c055253526becee8d086ec8bfd0415}{reshape}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ new\_n\_edges,\ \textcolor{keywordtype}{bool}\ preservedata\ =\ \textcolor{keyword}{true});}
-\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8hpp}{utils.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vertex_8hpp}{vertex.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{PolyhedronCollection_8hpp}{PolyhedronCollection.hpp}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceedge}{edge}}\{}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceedge_a47a908e6c68ced4dfcb9e398112ca045}{initialize}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ n\_edges);}
+\DoxyCodeLine{00017\ \ \ \ \ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceedge_a13c055253526becee8d086ec8bfd0415}{reshape}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ new\_n\_edges,\ \textcolor{keywordtype}{bool}\ preservedata\ =\ \textcolor{keyword}{true});}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceedge_af1721c13406d3b147160851d13c82885}{isEqual}}(\textcolor{keyword}{const}\ Eigen::VectorXi\&\ e1,\ \textcolor{keyword}{const}\ Eigen::VectorXi\&\ e2);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ }
-\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2}{getId}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::VectorXi\&\ endpoints\_id);}
-\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespaceedge_af1721c13406d3b147160851d13c82885}{isEqual}}(\textcolor{keyword}{const}\ Eigen::VectorXi\&\ e1,\ \textcolor{keyword}{const}\ Eigen::VectorXi\&\ e2);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a785c3c0689c7094cea25fc07c278d6f2}{getId}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::VectorXi\&\ endpoints\_id);}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}{add}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::Vector2i\ new\_endpoints\_id,\ \textcolor{keywordtype}{bool}\ checkedgeexists\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ shouldPrintEdgeExists\ =\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}{add}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ Eigen::Vector2i\ new\_endpoints\_id,\ \textcolor{keywordtype}{bool}\ checkedgeexists\ =\ \textcolor{keyword}{true},\ \textcolor{keywordtype}{bool}\ shouldPrintEdgeExists\ =\ \textcolor{keyword}{false});}
 \DoxyCodeLine{00062\ }
-\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}{length}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ edge\_id);}
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ \ }
-\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a05f29d2a58f045131296c434e2f74cce}{countGeodesic}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ b,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c\ =\ 0);}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}{length}}(PolyhedronCollection\&\ p\_coll,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ edge\_id);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespaceedge_a05f29d2a58f045131296c434e2f74cce}{countGeodesic}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ q,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ b,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ c\ =\ 0);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespaceedge_a0361540bc1c9a7c1eda9038dbf75150a}{exportTxt}}(\textcolor{keyword}{const}\ PolyhedronCollection\&\ p\_coll,\ \textcolor{keyword}{const}\ std::string\&\ path\ =\ \textcolor{stringliteral}{"{}./"{}});}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \}}
 
 \end{DoxyCode}

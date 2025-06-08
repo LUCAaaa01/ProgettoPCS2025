@@ -1,4 +1,6 @@
 #include "vertex.hpp"
+#include <string>
+#include <fstream>
 
 inline constexpr double PRECISION_TOLLERANCE = 1e-6;
 
@@ -44,7 +46,7 @@ namespace vertex{
 
     bool isPointOnSphere(const PolyhedronCollection& p_coll, unsigned int point_id){
         //  verifichiamo che l'id del punto sia valido
-        assert(contains(p_coll.Cell0DsId, point_id) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
+        assert(utils::contains(p_coll.Cell0DsId, point_id) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
         return p_coll.Cell0DsCoordinates.col(point_id).norm() == 1; //controlliamo se appartiene alla sfera 
     }
 
@@ -82,7 +84,7 @@ namespace vertex{
     unsigned int projectOnSphere(PolyhedronCollection& p_coll, unsigned int point_id, bool inplace){
         unsigned int result = point_id;
         // controlliamo che l'id del punto esista
-        assert(contains(p_coll.Cell0DsId, point_id) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
+        assert(utils::contains(p_coll.Cell0DsId, point_id) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
         Eigen::VectorXd v = p_coll.Cell0DsCoordinates.col(point_id).normalized(); //creo il punto proiettato sulla sfera di raggio 1
 
         if(inplace)
@@ -94,7 +96,7 @@ namespace vertex{
     }
 
     double distance(const PolyhedronCollection& p_coll, unsigned int p1_id, unsigned int p2_id){
-        assert((contains(p_coll.Cell0DsId, p1_id) && contains(p_coll.Cell0DsId, p2_id))
+        assert((utils::contains(p_coll.Cell0DsId, p1_id) && utils::contains(p_coll.Cell0DsId, p2_id))
                 && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
         
         return (p_coll.Cell0DsCoordinates.col(p1_id) - p_coll.Cell0DsCoordinates.col(p2_id)).norm();
@@ -109,7 +111,7 @@ namespace vertex{
         v << 0.0, 0.0, 0.0;
         for(const auto elt : id_points){
             // controlliamo che l'id del punto esista
-            assert(contains(p_coll.Cell0DsId, elt) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
+            assert(utils::contains(p_coll.Cell0DsId, elt) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
             v += p_coll.Cell0DsCoordinates.col(elt);
         }
         return v/id_points.size();
@@ -117,7 +119,7 @@ namespace vertex{
 
     Eigen::VectorXd interpolatePoints(const PolyhedronCollection& p_coll, unsigned int p1_id, unsigned int p2_id, double weight){
         // controlliamo che l'id dei punti esistano
-        assert((contains(p_coll.Cell0DsId, p1_id) && contains(p_coll.Cell0DsId, p2_id))
+        assert((utils::contains(p_coll.Cell0DsId, p1_id) && utils::contains(p_coll.Cell0DsId, p2_id))
         && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
 
         //verifichiamo che il peso sia valido
@@ -128,8 +130,8 @@ namespace vertex{
 
     unsigned int reflect(PolyhedronCollection& p_coll, unsigned int first_endpoints, unsigned int second_endpoints, unsigned int point_to_reflect){
         // controlliamo che l'id dei punti esistano
-        assert((contains(p_coll.Cell0DsId, first_endpoints) && contains(p_coll.Cell0DsId, second_endpoints) && 
-        contains(p_coll.Cell0DsId, point_to_reflect)) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
+        assert((utils::contains(p_coll.Cell0DsId, first_endpoints) && utils::contains(p_coll.Cell0DsId, second_endpoints) && 
+        utils::contains(p_coll.Cell0DsId, point_to_reflect)) && "Punto non esistente! Impossibile effettuare l'operazione richiesta.");
 
         double weight = 2.0;
         return add(p_coll, (1-weight)*p_coll.Cell0DsCoordinates.col(point_to_reflect) + 
@@ -160,5 +162,17 @@ namespace vertex{
                 break;
         }
         return n_vertices;
+    }
+
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path){
+        std::ofstream f(path + "Cell0Ds.txt");
+        f << "id x y z\n"; //scrivo intestazione 
+        for (unsigned int i = 0; i  < p_coll.NumCell0Ds; ++i) { 
+            //scorre tutti i vertici 0D e accede alle coordinate della matrice Cell0DsCCoordinates e scrive una riga per ciascuno
+            double x = p_coll.Cell0DsCoordinates(0, i);
+            double y = p_coll.Cell0DsCoordinates(1, i);
+            double z = p_coll.Cell0DsCoordinates(2, i);
+            f << i << " " << x << " " << y << " " << z << "\n";
+        }
     }
 }

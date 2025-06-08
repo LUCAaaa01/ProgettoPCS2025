@@ -1,5 +1,13 @@
 var searchData=
 [
-  ['reflect_0',['reflect',['../namespacevertex.html#aef9cdbc85f4b0409f699fb273aad95f1',1,'vertex']]],
-  ['reshape_1',['reshape',['../namespaceedge.html#a13c055253526becee8d086ec8bfd0415',1,'edge::reshape()'],['../namespaceface.html#a68252225cf440d894cd4b098336ccfe9',1,'face::reshape()'],['../namespacepolyhedron.html#a61e4ba5cdc19aa887364dfd96733d7a3',1,'polyhedron::reshape()'],['../namespacevertex.html#ac144fa31f5d6d5c732a5a208691bc1a3',1,'vertex::reshape()']]]
+  ['polyhedron_0',['polyhedron',['../namespacepolyhedron.html',1,'']]],
+  ['polyhedron_2ecpp_1',['polyhedron.cpp',['../polyhedron_8cpp.html',1,'']]],
+  ['polyhedron_2ehpp_2',['polyhedron.hpp',['../polyhedron_8hpp.html',1,'']]],
+  ['polyhedroncollection_3',['PolyhedronCollection',['../structPolyhedronCollection.html',1,'']]],
+  ['polyhedroncollection_2ehpp_4',['PolyhedronCollection.hpp',['../PolyhedronCollection_8hpp.html',1,'']]],
+  ['precision_5ftollerance_5',['PRECISION_TOLLERANCE',['../vertex_8cpp.html#aa2a392fde68aaa583c9754b399985805',1,'vertex.cpp']]],
+  ['principale_6',['Struttura dati principale',['../index.html#autotoc_md3',1,'']]],
+  ['progetto_7',['progetto',['../index.html#autotoc_md2',1,'Obiettivo del progetto'],['../index.html#autotoc_md1',1,'Struttura e utilizzo del progetto']]],
+  ['progettopcs2025_8',['ProgettoPCS2025',['../index.html',1,'']]],
+  ['projectonsphere_9',['projectOnSphere',['../namespacevertex.html#ace592e049b6afb3697c0f05df82a5953',1,'vertex']]]
 ];

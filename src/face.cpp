@@ -1,6 +1,8 @@
 #include "face.hpp"
 #include <unordered_set>
 #include <cmath>
+#include <string>
+#include <fstream>
 
 namespace face{
     
@@ -119,7 +121,7 @@ namespace face{
     }
 
     unsigned int getCentroid(PolyhedronCollection& p_coll, unsigned int face_id, bool projection){
-        assert(contains(p_coll.Cell2DsId, face_id) && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
+        assert(utils::contains(p_coll.Cell2DsId, face_id) && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
         
         // calcoliamo il centroide e lo aggiungo alla lista dei punti
         unsigned int point_id = vertex::add(p_coll, vertex::averagePoints(p_coll, p_coll.Cell2DsVertices[face_id]));
@@ -131,7 +133,7 @@ namespace face{
     bool areAdjacent(PolyhedronCollection& p_coll, unsigned int f1_id, unsigned int f2_id){
         bool result = false;
         //verifichiamo l'esistenza della faccia
-        assert(contains(p_coll.Cell2DsId, f1_id) && contains(p_coll.Cell2DsId, f2_id)
+        assert(utils::contains(p_coll.Cell2DsId, f1_id) && utils::contains(p_coll.Cell2DsId, f2_id)
                 && "Faccia non esistente! Impossibile effettuare l'operazione richiesta.");
 
         // creiamo un set contenente gli elementi del primo vettore (complessità O(n))
@@ -150,7 +152,7 @@ namespace face{
 
     std::vector<unsigned int> computeClassICharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b){
         // alcuni controlli dell'input
-        assert(contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
+        assert(utils::contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
         assert((p_coll.Cell2DsVertices[face_id].size() == 3) && "Errore! La faccia non ha 3 vertici! Non è possibile fare la triangolazione.");
         assert((b > 0) && "Errore!Il parametro b deve essere > 0!");
 
@@ -158,7 +160,7 @@ namespace face{
         std::vector<unsigned int> new_faces_id = {};
 
         std::vector<unsigned int> vertices_id;
-        vertices_id.reserve(factorial(b));
+        vertices_id.reserve(utils::factorial(b));
         vertices_id.push_back(p_coll.Cell2DsVertices[face_id][0]);
 
         for(size_t i = 1; i <= b; i++){
@@ -185,7 +187,7 @@ namespace face{
 
     std::vector<unsigned int> computeClassIICharacteristicTriangulation(PolyhedronCollection& p_coll, unsigned int face_id, unsigned int b){
         // alcuni controlli dell'input
-        assert(contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
+        assert(utils::contains(p_coll.Cell2DsId, face_id) && "Errore! L'id della faccia di cui si vuole fare la triangolazione non esiste!");
         assert((p_coll.Cell2DsVertices[face_id].size() == 3) && "Errore! La faccia non ha 3 vertici! Non è possibile fare la triangolazione.");
         assert((b > 0) && "Errore!Il parametro b deve essere > 0!");
 
@@ -301,5 +303,19 @@ namespace face{
                 break;
         }
         return n_faces;
+    }
+
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path){
+        std::ofstream f(path + "Cell2Ds.txt");
+        f << "id numVertices vertices numEdges edges\n";
+        for (unsigned i = 0; i < p_coll.NumCell2Ds; ++i) { //scorre le facce e per ognuna prende i vettori dei vertici e degli edge
+            auto const &verts = p_coll.Cell2DsVertices[i];
+            auto const &edges = p_coll.Cell2DsEdges[i];
+            f << i << " " << verts.size(); // scrivo id,numero vertici + lista, numero edge + lista
+            for (auto v : verts)  f << " " << v;
+            f << " " << edges.size();
+            for (auto e : edges) f << " " << e;
+            f << "\n"; 
+        }
     }
 }

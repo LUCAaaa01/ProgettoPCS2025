@@ -4,48 +4,35 @@
 #include "Eigen/Eigen"
 
 
-//namespace PolygonalLibrary 
-
 struct PolyhedronCollection
 {
     // ---------- ATTRIBUTI VERTICI --------------- //
-    unsigned int NumCell0Ds = 0; 
-    std::vector<unsigned int> Cell0DsId = {}; 
-    Eigen::MatrixXd Cell0DsCoordinates = {};
+    unsigned int NumCell0Ds = 0; // numero di vertici
+    std::vector<unsigned int> Cell0DsId = {}; // id dei vertici
+    Eigen::MatrixXd Cell0DsCoordinates = {}; // coordinate x,y,z dei vertici
 
     // ---------- ATTRIBUTI SEGMENTI --------------- //
-    unsigned int NumCell1Ds = 0; 
-    std::vector<unsigned int> Cell1DsId = {}; 
-    Eigen::MatrixXi Cell1DsEndpoints = {}; ///< Cell1D vertices indices, size 2 x NumberCell1D (fromId,toId)
+    unsigned int NumCell1Ds = 0; // numero di lati
+    std::vector<unsigned int> Cell1DsId = {}; // id dei lati
+    Eigen::MatrixXi Cell1DsEndpoints = {}; // id del vertice iniziale e del vertice finale del lato
 
     // ---------- ATTRIBUTI FACCE --------------- //
-    unsigned int NumCell2Ds = 0;
-    std::vector<unsigned int> Cell2DsId = {};
-    std::vector<unsigned int> NumCell2DsVertices;
-    std::vector<unsigned int> NumCell2DsEdges;
-    std::vector<std::vector<unsigned int>> Cell2DsVertices = {};
-    std::vector<std::vector<unsigned int>> Cell2DsEdges = {}; 
+    unsigned int NumCell2Ds = 0; // numero di facce
+    std::vector<unsigned int> Cell2DsId = {}; // id delle facce
+    std::vector<unsigned int> NumCell2DsVertices; // numero di vertici nelle diverse facce
+    std::vector<unsigned int> NumCell2DsEdges; // numero di lati nelle diverse facce
+    std::vector<std::vector<unsigned int>> Cell2DsVertices = {}; // id dei vertici nelle diverse facce
+    std::vector<std::vector<unsigned int>> Cell2DsEdges = {}; // id dei lati nelle diverse facce
 
     // ---------- ATTRIBUTI POLIEDRI --------------- //
-    unsigned int NumCell3Ds = 0; ///< number of Cell2D
-    std::vector<unsigned int> Cell3DsId = {}; 
-    std::vector<unsigned int> NumCell3DsVertices;
-    std::vector<unsigned int> NumCell3DsEdges;
-    std::vector<unsigned int> NumCell3DsFaces;
-    std::vector<std::vector<unsigned int>> Cell3DsVertices = {}; 
-    std::vector<std::vector<unsigned int>> Cell3DsEdges = {}; 
-    std::vector<std::vector<unsigned int>> Cell3DsFaces = {};
+    unsigned int NumCell3Ds = 0; // numero di poliedri
+    std::vector<unsigned int> Cell3DsId = {}; // id dei poliedri
+    std::vector<unsigned int> NumCell3DsVertices; // numero di vertici nei diversi poliedri
+    std::vector<unsigned int> NumCell3DsEdges; // numero di lati nei diversi poliedri
+    std::vector<unsigned int> NumCell3DsFaces; // numero di facce nei diversi poliedri
+    std::vector<std::vector<unsigned int>> Cell3DsVertices = {}; // id dei vertici nei diversi poliedri
+    std::vector<std::vector<unsigned int>> Cell3DsEdges = {}; // id dei lati nei diversi poliedri
+    std::vector<std::vector<unsigned int>> Cell3DsFaces = {}; // id delle facce nei diversi poliedri
 
 
 };
-
-// Verifica se un elemento appartiene ad un vettore
-inline bool contains(const std::vector<unsigned int>& vec, unsigned int element){
-    return std::find(vec.begin(), vec.end(), element) != vec.end();
-}
-
-inline unsigned int factorial(unsigned int n){
-    if(n == 1)
-        return 1;
-    return n*factorial(n-1);
-}

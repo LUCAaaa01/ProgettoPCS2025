@@ -19,6 +19,9 @@ list(APPEND src_sources ${CMAKE_CURRENT_SOURCE_DIR}/face.cpp)
 list(APPEND src_headers ${CMAKE_CURRENT_SOURCE_DIR}/polyhedron.hpp)
 list(APPEND src_sources ${CMAKE_CURRENT_SOURCE_DIR}/polyhedron.cpp)
 
+list(APPEND src_headers ${CMAKE_CURRENT_SOURCE_DIR}/utils.hpp)
+list(APPEND src_sources ${CMAKE_CURRENT_SOURCE_DIR}/utils.cpp)
+
 list(APPEND src_headers ${CMAKE_CURRENT_SOURCE_DIR}/PolyhedronCollection.hpp)
 
 

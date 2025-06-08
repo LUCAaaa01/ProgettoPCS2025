@@ -4,6 +4,9 @@
 #include <set>
 #include <string>
 
+void exportPolyhedronCollectionOnParaview(const PolyhedronCollection& p_coll, unsigned int poly_id,
+                                            std::vector<int>& vertices_path, std::vector<int>& edges_path);
+
 int main(int argc, char* argv[]){
     // 4 0 6 parametri più il nome del programma
     if(argc != 5 and argc != 7){
@@ -48,7 +51,7 @@ int main(int argc, char* argv[]){
     if(argc == 7){
         unsigned int id1 = std::stoul(argv[5]);
         unsigned int id2 = std::stoul(argv[6]);
-        while((!contains(p_coll.Cell3DsVertices[poly_id], id1) || !contains(p_coll.Cell3DsVertices[poly_id], id2))){
+        while((!utils::contains(p_coll.Cell3DsVertices[poly_id], id1) || !utils::contains(p_coll.Cell3DsVertices[poly_id], id2))){
             std::cout << "Sembra ci sia un errore con i vertici che hai inserito! Questi potrebbero non appartenere al poliedro o non esistere." << std::endl;
             std::cout << "I vertici che appartengono al poliedro sono: " << std::endl;
             for(const auto vertice_id : p_coll.Cell3DsVertices[poly_id])
@@ -72,6 +75,19 @@ int main(int argc, char* argv[]){
     }
 
     std::cout << "Esportazione dei poliedri creati in corso ... " << std::endl;
+    exportPolyhedronCollectionOnParaview(p_coll, poly_id, vertices_path, edges_path);
+    std::cout << "Esportazione completata correttamente!" << std::endl;
+
+    std::cout << "Esportazione dei dati nei file txt ..." << std::endl;
+    utils::exportToTxt(p_coll);
+    std::cout << "Esportazione completata!" << std::endl;
+
+    return 0;
+}
+
+
+void exportPolyhedronCollectionOnParaview(const PolyhedronCollection& p_coll, unsigned int poly_id,
+                                            std::vector<int>& vertices_path, std::vector<int>& edges_path){
     Gedim::UCDUtilities utilities;
     {
         std::vector<Gedim::UCDProperty<double>> cell0Ds_properties(2);
@@ -140,7 +156,5 @@ int main(int argc, char* argv[]){
                                  {},
                                  cell1Ds_properties);
     }
-    std::cout << "Esportazione completata correttamente!" << std::endl;
 
-    return 0;
 }

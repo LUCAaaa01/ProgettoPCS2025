@@ -1,6 +1,7 @@
 \doxysection{src/edge.hpp File Reference}
 \hypertarget{edge_8hpp}{}\label{edge_8hpp}\index{src/edge.hpp@{src/edge.hpp}}
 {\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}utils.\+hpp"{}}\newline
 {\ttfamily \#include "{}vertex.\+hpp"{}}\newline
 {\ttfamily \#include "{}Polyhedron\+Collection.\+hpp"{}}\newline
 \doxysubsubsection*{Namespaces}
@@ -24,4 +25,6 @@ unsigned int \mbox{\hyperlink{namespaceedge_a5a9719f0bbc68ead2b9c1320481af680}{e
 double \mbox{\hyperlink{namespaceedge_a371c6b39e7a0c4da3570153fdbaaba69}{edge\+::length}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int edge\+\_\+id)
 \begin{DoxyCompactList}\small\item\em Calcola la lunghezza del lato. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespaceedge_a05f29d2a58f045131296c434e2f74cce}{edge\+::count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
-\begin{DoxyCompactList}\small\item\em Conta il numero di lati del solido geodetico di classe I e II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Conta il numero di lati del solido geodetico di classe I e II. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceedge_a0361540bc1c9a7c1eda9038dbf75150a}{edge\+::export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta i lati in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}

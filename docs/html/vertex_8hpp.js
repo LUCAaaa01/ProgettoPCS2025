@@ -4,6 +4,7 @@ var vertex_8hpp =
     [ "vertex::averagePoints", "namespacevertex.html#acfbdefbe746e5cd3fc144e77b8b4eee4", null ],
     [ "vertex::countGeodesic", "namespacevertex.html#a709d4276dfa9adcc57d9e1ca21ee42b8", null ],
     [ "vertex::distance", "namespacevertex.html#a0c97c9e86292cf13588f318255c9ce64", null ],
+    [ "vertex::exportTxt", "namespacevertex.html#ad0cd6428b19431365dd3684592f692c3", null ],
     [ "vertex::getId", "namespacevertex.html#acf3b7280b86d20673c7c544bbd2b9c1d", null ],
     [ "vertex::initialize", "namespacevertex.html#a46ef94d2af7ed6b3b40475168b2b958d", null ],
     [ "vertex::interpolatePoints", "namespacevertex.html#af09cf203f91ab8147a1722536951af32", null ],

@@ -140,15 +140,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a8204a478f7a18773a19c5b5151f915bf" id="r_a8204a478f7a18773a19c5b5151f915bf"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8204a478f7a18773a19c5b5151f915bf">buildGeodesicClassII</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int poly_id, unsigned int q, unsigned int b)</td></tr>
 <tr class="memdesc:a8204a478f7a18773a19c5b5151f915bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea il poliedro geodetico di classe II.  <br /></td></tr>
 <tr class="separator:a8204a478f7a18773a19c5b5151f915bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b26c613ab1ed57061d0dc8d65981f4f" id="r_a4b26c613ab1ed57061d0dc8d65981f4f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b26c613ab1ed57061d0dc8d65981f4f">createGeodesicPolyhedron</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)</td></tr>
-<tr class="memdesc:a4b26c613ab1ed57061d0dc8d65981f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea il poliedro geodetico.  <br /></td></tr>
-<tr class="separator:a4b26c613ab1ed57061d0dc8d65981f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9285ea3e8b3e7fb95268d5710376944f" id="r_a9285ea3e8b3e7fb95268d5710376944f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9285ea3e8b3e7fb95268d5710376944f">createGoldbergPolyhedron</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)</td></tr>
-<tr class="memdesc:a9285ea3e8b3e7fb95268d5710376944f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea il poliedro di Goldberg.  <br /></td></tr>
-<tr class="separator:a9285ea3e8b3e7fb95268d5710376944f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255d5d55dc1aebc320766e1dda283c5a" id="r_a255d5d55dc1aebc320766e1dda283c5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a255d5d55dc1aebc320766e1dda283c5a">createGeodesicPolyhedron</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)</td></tr>
+<tr class="memdesc:a255d5d55dc1aebc320766e1dda283c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea il poliedro geodetico.  <br /></td></tr>
+<tr class="separator:a255d5d55dc1aebc320766e1dda283c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c734ce39b16fe565f6d6f270f135811" id="r_a1c734ce39b16fe565f6d6f270f135811"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c734ce39b16fe565f6d6f270f135811">createGoldbergPolyhedron</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)</td></tr>
+<tr class="memdesc:a1c734ce39b16fe565f6d6f270f135811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea il poliedro di Goldberg.  <br /></td></tr>
+<tr class="separator:a1c734ce39b16fe565f6d6f270f135811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5b053fb0a3444e65b3597e0c89b1ab3" id="r_ac5b053fb0a3444e65b3597e0c89b1ab3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5b053fb0a3444e65b3597e0c89b1ab3">findShortestPath</a> (<a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, unsigned int poly_id, unsigned int id1, unsigned int id2, std::vector&lt; int &gt; &amp;cammino_vertici, std::vector&lt; int &gt; &amp;cammino_lati, bool graphIsWeighted=false)</td></tr>
 <tr class="memdesc:ac5b053fb0a3444e65b3597e0c89b1ab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trova il percorso più breve (in termini di distanza) tra due vertici di un poliedro utilizzando l'algoritmo di Dijkstra.  <br /></td></tr>
 <tr class="separator:ac5b053fb0a3444e65b3597e0c89b1ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c2c5fc5467d69e3e156acdf7c002fbe" id="r_a7c2c5fc5467d69e3e156acdf7c002fbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c2c5fc5467d69e3e156acdf7c002fbe">exportTxt</a> (const <a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;p_coll, const std::string &amp;path=&quot;./&quot;)</td></tr>
+<tr class="memdesc:a7c2c5fc5467d69e3e156acdf7c002fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esporta i poliedri in un file txt.  <br /></td></tr>
+<tr class="separator:a7c2c5fc5467d69e3e156acdf7c002fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae8b1b3394aa267ceb8336d02fbf5111f" name="ae8b1b3394aa267ceb8336d02fbf5111f"></a>
@@ -354,14 +357,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b26c613ab1ed57061d0dc8d65981f4f" name="a4b26c613ab1ed57061d0dc8d65981f4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b26c613ab1ed57061d0dc8d65981f4f">&#9670;&#160;</a></span>createGeodesicPolyhedron()</h2>
+<a id="a255d5d55dc1aebc320766e1dda283c5a" name="a255d5d55dc1aebc320766e1dda283c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255d5d55dc1aebc320766e1dda283c5a">&#9670;&#160;</a></span>createGeodesicPolyhedron()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int polyhedron::createGeodesicPolyhedron </td>
+          <td class="memname">int polyhedron::createGeodesicPolyhedron </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p_coll</em></span>, </td>
         </tr>
@@ -399,18 +402,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>ritorna l'id del poliedro </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>ritorna l'id del poliedro (-1 se dà errore) </dd></dl>
 
 </div>
 </div>
-<a id="a9285ea3e8b3e7fb95268d5710376944f" name="a9285ea3e8b3e7fb95268d5710376944f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9285ea3e8b3e7fb95268d5710376944f">&#9670;&#160;</a></span>createGoldbergPolyhedron()</h2>
+<a id="a1c734ce39b16fe565f6d6f270f135811" name="a1c734ce39b16fe565f6d6f270f135811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c734ce39b16fe565f6d6f270f135811">&#9670;&#160;</a></span>createGoldbergPolyhedron()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int polyhedron::createGoldbergPolyhedron </td>
+          <td class="memname">int polyhedron::createGoldbergPolyhedron </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p_coll</em></span>, </td>
         </tr>
@@ -448,7 +451,37 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>ritorna l'id del poliedro </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>ritorna l'id del poliedro (-1 se dà errore) </dd></dl>
+
+</div>
+</div>
+<a id="a7c2c5fc5467d69e3e156acdf7c002fbe" name="a7c2c5fc5467d69e3e156acdf7c002fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c2c5fc5467d69e3e156acdf7c002fbe">&#9670;&#160;</a></span>exportTxt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void polyhedron::exportTxt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p_coll</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;./&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Esporta i poliedri in un file txt. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p_coll</td><td>oggetto di <a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a> </td></tr>
+    <tr><td class="paramname">path</td><td>percorso della cartella in cui si vuole salvare il file </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

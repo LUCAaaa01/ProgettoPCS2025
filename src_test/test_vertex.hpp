@@ -2,7 +2,8 @@
 
 #include <gtest/gtest.h>
 #include "PolyhedronCollection.hpp"
-#include "vertex.hpp"  
+#include "vertex.hpp" 
+#include "utils.hpp" 
 #include "Eigen/Eigen"
 
 class VertexTest : public ::testing::Test {
@@ -99,7 +100,7 @@ TEST_F(VertexTest, SimpleReflection) {
     EXPECT_EQ(new_id, 3u);
 
     // Verifico che l'id 3 sia stato aggiunto a Cell0DsId
-    ASSERT_TRUE(contains(p.Cell0DsId, new_id));
+    ASSERT_TRUE(utils::contains(p.Cell0DsId, new_id));
 
     // Verifico la coordinata calcolata
     Eigen::Vector3d expected(-1.0, 0.0, 0.0);

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cassert>
 #include "Eigen/Eigen"
+#include "utils.hpp"
 #include "PolyhedronCollection.hpp"
 
 namespace vertex{
@@ -144,4 +145,13 @@ namespace vertex{
     * @return ritorna il numero di vertici del solido geodetico di classe I.
     */ 
     unsigned int countGeodesic(unsigned int q, unsigned int b, unsigned int c = 0);
+
+
+    /**
+    * @brief Esporta i vertici in un file txt
+    * 
+    * @param p_coll oggetto di PolyhedronCollection
+    * @param path percorso della cartella in cui si vuole salvare il file
+    */ 
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path = "./");
 }

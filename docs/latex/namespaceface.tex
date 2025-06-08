@@ -22,7 +22,9 @@ std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_a9e76e3d84d7a85
 std\+::vector$<$ unsigned int $>$ \mbox{\hyperlink{namespaceface_aa137876d005f6c606738dbb28b3f38ce}{compute\+Class\+IICharacteristic\+Triangulation}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int face\+\_\+id, unsigned int b)
 \begin{DoxyCompactList}\small\item\em Calcola la triangolazione caratterizzante la faccia dei poliedri geodetici di classe II. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespaceface_aa864f4ccc2c98938ccea74fbb9f074dd}{count\+Geodesic}} (unsigned int q, unsigned int b, unsigned int c=0)
-\begin{DoxyCompactList}\small\item\em Conta il numero di facce del solido geodetico di classe I 0 II. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Conta il numero di facce del solido geodetico di classe I 0 II. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceface_accb2d328219b6792b480a459e3cbe1ce}{export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta le facce in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -138,6 +140,23 @@ Conta il numero di facce del solido geodetico di classe I 0 II.
 \begin{DoxyReturn}{Returns}
 ritorna il numero di facce del solido geodetico di classe I. 
 \end{DoxyReturn}
+\Hypertarget{namespaceface_accb2d328219b6792b480a459e3cbe1ce}\index{face@{face}!exportTxt@{exportTxt}}
+\index{exportTxt@{exportTxt}!face@{face}}
+\doxysubsubsection{\texorpdfstring{exportTxt()}{exportTxt()}}
+{\footnotesize\ttfamily \label{namespaceface_accb2d328219b6792b480a459e3cbe1ce} 
+void face\+::export\+Txt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const std\+::string \&}]{path}{ = {\ttfamily "{}./"{}}}\end{DoxyParamCaption})}
+
+
+
+Esporta le facce in un file txt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em path} & percorso della cartella in cui si vuole salvare il file \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespaceface_ad04ca9d2db9373ac185d49d124cce448}\index{face@{face}!getCentroid@{getCentroid}}
 \index{getCentroid@{getCentroid}!face@{face}}
 \doxysubsubsection{\texorpdfstring{getCentroid()}{getCentroid()}}

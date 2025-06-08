@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectonsphere_0',['projectOnSphere',['../namespacevertex.html#ace592e049b6afb3697c0f05df82a5953',1,'vertex']]]
+  ['length_0',['length',['../namespaceedge.html#a371c6b39e7a0c4da3570153fdbaaba69',1,'edge']]]
 ];

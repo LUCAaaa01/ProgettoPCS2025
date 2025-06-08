@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "utils.hpp"
 #include "vertex.hpp"
 #include "edge.hpp"
 #include "PolyhedronCollection.hpp"
@@ -119,5 +120,11 @@ namespace face{
     unsigned int countGeodesic(unsigned int q, unsigned int b, unsigned int c = 0);
 
 
-
+    /**
+    * @brief Esporta le facce in un file txt
+    * 
+    * @param p_coll oggetto di PolyhedronCollection
+    * @param path percorso della cartella in cui si vuole salvare il file
+    */ 
+    void exportTxt(const PolyhedronCollection& p_coll, const std::string& path = "./");
 }

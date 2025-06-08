@@ -1,0 +1,72 @@
+\doxysection{utils Namespace Reference}
+\hypertarget{namespaceutils}{}\label{namespaceutils}\index{utils@{utils}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{namespaceutils_a07defdbf95cfaa171dfc9ab704e4319c}{contains}} (const std\+::vector$<$ unsigned int $>$ \&vec, unsigned int element)
+\begin{DoxyCompactList}\small\item\em Verifica se un elemento appartiene a un vettore. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{namespaceutils_adfb63641f8a119bb24f5bd9ecc85f35b}{factorial}} (unsigned int n)
+\begin{DoxyCompactList}\small\item\em Calcola il fattoriale di un intero senza segno. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespaceutils_a5de0f54721eb55908b67a695b89798ca}{export\+To\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}"{})
+\begin{DoxyCompactList}\small\item\em Esporto tutti i file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceutils_a07defdbf95cfaa171dfc9ab704e4319c}\index{utils@{utils}!contains@{contains}}
+\index{contains@{contains}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily \label{namespaceutils_a07defdbf95cfaa171dfc9ab704e4319c} 
+bool utils\+::contains (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned int $>$ \&}]{vec}{, }\item[{unsigned int}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se un elemento appartiene a un vettore. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec} & vettore di elementi \\
+\hline
+{\em element} & elemento che si vuole verificare se appartiene al vettore\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna se l\textquotesingle{}elemento appartiene al vettore 
+\end{DoxyReturn}
+\Hypertarget{namespaceutils_a5de0f54721eb55908b67a695b89798ca}\index{utils@{utils}!exportToTxt@{exportToTxt}}
+\index{exportToTxt@{exportToTxt}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{exportToTxt()}{exportToTxt()}}
+{\footnotesize\ttfamily \label{namespaceutils_a5de0f54721eb55908b67a695b89798ca} 
+void utils\+::export\+To\+Txt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const std\+::string \&}]{path}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Esporto tutti i file txt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em path} & percorso della cartella in cui si vuole salvare il file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna se l\textquotesingle{}elemento appartiene al vettore 
+\end{DoxyReturn}
+\Hypertarget{namespaceutils_adfb63641f8a119bb24f5bd9ecc85f35b}\index{utils@{utils}!factorial@{factorial}}
+\index{factorial@{factorial}!utils@{utils}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily \label{namespaceutils_adfb63641f8a119bb24f5bd9ecc85f35b} 
+unsigned int utils\+::factorial (\begin{DoxyParamCaption}\item[{unsigned int}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Calcola il fattoriale di un intero senza segno. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & il numero di cui si vuole calcolare il fattoriale\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ritorna il fattoriale 
+\end{DoxyReturn}

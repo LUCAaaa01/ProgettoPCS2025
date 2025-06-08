@@ -23,12 +23,14 @@ unsigned int \mbox{\hyperlink{namespacepolyhedron_adf26091abcdb8a91ff20ae64097ef
 \begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico di classe I. \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{namespacepolyhedron_a8204a478f7a18773a19c5b5151f915bf}{build\+Geodesic\+Class\+II}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, unsigned int q, unsigned int b)
 \begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico di classe II. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{namespacepolyhedron_a4b26c613ab1ed57061d0dc8d65981f4f}{create\+Geodesic\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
+int \mbox{\hyperlink{namespacepolyhedron_a255d5d55dc1aebc320766e1dda283c5a}{create\+Geodesic\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
 \begin{DoxyCompactList}\small\item\em Crea il poliedro geodetico. \end{DoxyCompactList}\item 
-unsigned int \mbox{\hyperlink{namespacepolyhedron_a9285ea3e8b3e7fb95268d5710376944f}{create\+Goldberg\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
+int \mbox{\hyperlink{namespacepolyhedron_a1c734ce39b16fe565f6d6f270f135811}{create\+Goldberg\+Polyhedron}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int p, unsigned int q, unsigned int b, unsigned int c)
 \begin{DoxyCompactList}\small\item\em Crea il poliedro di Goldberg. \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{namespacepolyhedron_ac5b053fb0a3444e65b3597e0c89b1ab3}{find\+Shortest\+Path}} (\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, unsigned int poly\+\_\+id, unsigned int id1, unsigned int id2, std\+::vector$<$ int $>$ \&cammino\+\_\+vertici, std\+::vector$<$ int $>$ \&cammino\+\_\+lati, bool graph\+Is\+Weighted=false)
-\begin{DoxyCompactList}\small\item\em Trova il percorso più breve (in termini di distanza) tra due vertici di un poliedro utilizzando l\textquotesingle{}algoritmo di Dijkstra. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Trova il percorso più breve (in termini di distanza) tra due vertici di un poliedro utilizzando l\textquotesingle{}algoritmo di Dijkstra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespacepolyhedron_a7c2c5fc5467d69e3e156acdf7c002fbe}{export\+Txt}} (const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&p\+\_\+coll, const std\+::string \&path="{}./"{})
+\begin{DoxyCompactList}\small\item\em Esporta i poliedri in un file txt. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -148,11 +150,11 @@ Crea il duale del poliedro.
 \begin{DoxyReturn}{Returns}
 ritorna l\textquotesingle{}id del duale del poliedro 
 \end{DoxyReturn}
-\Hypertarget{namespacepolyhedron_a4b26c613ab1ed57061d0dc8d65981f4f}\index{polyhedron@{polyhedron}!createGeodesicPolyhedron@{createGeodesicPolyhedron}}
+\Hypertarget{namespacepolyhedron_a255d5d55dc1aebc320766e1dda283c5a}\index{polyhedron@{polyhedron}!createGeodesicPolyhedron@{createGeodesicPolyhedron}}
 \index{createGeodesicPolyhedron@{createGeodesicPolyhedron}!polyhedron@{polyhedron}}
 \doxysubsubsection{\texorpdfstring{createGeodesicPolyhedron()}{createGeodesicPolyhedron()}}
-{\footnotesize\ttfamily \label{namespacepolyhedron_a4b26c613ab1ed57061d0dc8d65981f4f} 
-unsigned int polyhedron\+::create\+Geodesic\+Polyhedron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{p}{, }\item[{unsigned int}]{q}{, }\item[{unsigned int}]{b}{, }\item[{unsigned int}]{c}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespacepolyhedron_a255d5d55dc1aebc320766e1dda283c5a} 
+int polyhedron\+::create\+Geodesic\+Polyhedron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{p}{, }\item[{unsigned int}]{q}{, }\item[{unsigned int}]{b}{, }\item[{unsigned int}]{c}{}\end{DoxyParamCaption})}
 
 
 
@@ -172,13 +174,13 @@ Crea il poliedro geodetico.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-ritorna l\textquotesingle{}id del poliedro 
+ritorna l\textquotesingle{}id del poliedro (-\/1 se dà errore) 
 \end{DoxyReturn}
-\Hypertarget{namespacepolyhedron_a9285ea3e8b3e7fb95268d5710376944f}\index{polyhedron@{polyhedron}!createGoldbergPolyhedron@{createGoldbergPolyhedron}}
+\Hypertarget{namespacepolyhedron_a1c734ce39b16fe565f6d6f270f135811}\index{polyhedron@{polyhedron}!createGoldbergPolyhedron@{createGoldbergPolyhedron}}
 \index{createGoldbergPolyhedron@{createGoldbergPolyhedron}!polyhedron@{polyhedron}}
 \doxysubsubsection{\texorpdfstring{createGoldbergPolyhedron()}{createGoldbergPolyhedron()}}
-{\footnotesize\ttfamily \label{namespacepolyhedron_a9285ea3e8b3e7fb95268d5710376944f} 
-unsigned int polyhedron\+::create\+Goldberg\+Polyhedron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{p}{, }\item[{unsigned int}]{q}{, }\item[{unsigned int}]{b}{, }\item[{unsigned int}]{c}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{namespacepolyhedron_a1c734ce39b16fe565f6d6f270f135811} 
+int polyhedron\+::create\+Goldberg\+Polyhedron (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{unsigned int}]{p}{, }\item[{unsigned int}]{q}{, }\item[{unsigned int}]{b}{, }\item[{unsigned int}]{c}{}\end{DoxyParamCaption})}
 
 
 
@@ -198,8 +200,25 @@ Crea il poliedro di Goldberg.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-ritorna l\textquotesingle{}id del poliedro 
+ritorna l\textquotesingle{}id del poliedro (-\/1 se dà errore) 
 \end{DoxyReturn}
+\Hypertarget{namespacepolyhedron_a7c2c5fc5467d69e3e156acdf7c002fbe}\index{polyhedron@{polyhedron}!exportTxt@{exportTxt}}
+\index{exportTxt@{exportTxt}!polyhedron@{polyhedron}}
+\doxysubsubsection{\texorpdfstring{exportTxt()}{exportTxt()}}
+{\footnotesize\ttfamily \label{namespacepolyhedron_a7c2c5fc5467d69e3e156acdf7c002fbe} 
+void polyhedron\+::export\+Txt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structPolyhedronCollection}{Polyhedron\+Collection}} \&}]{p\+\_\+coll}{, }\item[{const std\+::string \&}]{path}{ = {\ttfamily "{}./"{}}}\end{DoxyParamCaption})}
+
+
+
+Esporta i poliedri in un file txt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+\_\+coll} & oggetto di \doxylink{structPolyhedronCollection}{Polyhedron\+Collection} \\
+\hline
+{\em path} & percorso della cartella in cui si vuole salvare il file \\
+\hline
+\end{DoxyParams}
 \Hypertarget{namespacepolyhedron_ac5b053fb0a3444e65b3597e0c89b1ab3}\index{polyhedron@{polyhedron}!findShortestPath@{findShortestPath}}
 \index{findShortestPath@{findShortestPath}!polyhedron@{polyhedron}}
 \doxysubsubsection{\texorpdfstring{findShortestPath()}{findShortestPath()}}

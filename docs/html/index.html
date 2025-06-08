@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PROGETTO_PCS_2025: Main Page</title>
+<title>PROGETTO_PCS_2025: ProgettoPCS2025</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -101,10 +101,60 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">PROGETTO_PCS_2025 Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">ProgettoPCS2025 </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a></p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Struttura e utilizzo del progetto</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Obiettivo del progetto</h2>
+<p>Il codice ha lo scopo di rappresentare in modo efficiente e modulare una struttura dati per poliedri (geodetici, di Goldberg, ecc.), gestendone vertici, lati, facce e celle 3D. </p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Struttura dati principale</h2>
+<p>Tutti i dati sono contenuti in una sola struct: <code><a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a></code>, che include:</p><ul>
+<li>una lista di vertici (0D)</li>
+<li>una lista di lati (1D)</li>
+<li>una lista di facce (2D)</li>
+<li>una lista di poliedri (3D)</li>
+</ul>
+<p>Gli elementi sono identificati tramite ID numerici e riferimenti incrociati (ad esempio, un lato contiene gli ID dei vertici estremi).</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Organizzazione del codice: namespace</h2>
+<p>Il progetto è suddiviso logicamente in namespace:</p><ul>
+<li><code>vertex::</code> per tutte le operazioni sui vertici</li>
+<li><code>edge::</code> per i lati</li>
+<li><code>face::</code> per le facce</li>
+<li><code>polyhedron::</code> per i poliedri</li>
+<li><code>utils::</code> per le funzioni generiche legate alla struttura <a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a></li>
+</ul>
+<p>Ogni namespace gestisce <b>solo i dati di sua competenza</b>. Tutte le modifiche o letture a <code><a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a></code> dovrebbero avvenire attraverso le funzioni nei namespace.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Funzioni standard e specifiche</h2>
+<p>Ogni namespace include:</p><ul>
+<li><b>Funzioni standard</b>: <code>add</code>, <code>initialize</code>, <code>getId</code>, <code>isEqual</code>, ecc.</li>
+<li><b>Funzioni specifiche</b> (legate al contesto):<ul>
+<li>Esempio: <code>face::triangulateGeodesicClassI</code>, <code><a class="el" href="namespacevertex.html#ace592e049b6afb3697c0f05df82a5953" title="Proietta il punto sulla sfera.">vertex::projectOnSphere</a></code>, ecc.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Esempio d'uso consigliato</h2>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structPolyhedronCollection.html">PolyhedronCollection</a> p_coll;</div>
+<div class="line"><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vertex_id, face_id;</div>
+<div class="line">vertex_id = <a class="code hl_function" href="namespacevertex.html#a3c5c350b94bda0a0c6a33bb370f225c9">vertex::add</a>(p_coll, Eigen::Vector3d(x, y, z));  <span class="comment">// Aggiunge un vertice</span></div>
+<div class="line">face_id = <a class="code hl_function" href="namespaceface.html#a9ea69afb010808602c953c67d300ddab">face::add</a>(p_coll, vertIds);  <span class="comment">// Aggiunge una faccia specificando solo i vertici</span></div>
+<div class="ttc" id="anamespaceface_html_a9ea69afb010808602c953c67d300ddab"><div class="ttname"><a href="namespaceface.html#a9ea69afb010808602c953c67d300ddab">face::add</a></div><div class="ttdeci">unsigned int add(PolyhedronCollection &amp;p_coll, const std::vector&lt; unsigned int &gt; &amp;new_vertices_id, bool checkfaceexists, bool shouldPrintFaceExists)</div><div class="ttdoc">Aggiunge una faccia, se non esiste ancora.</div><div class="ttdef"><b>Definition</b> face.cpp:82</div></div>
+<div class="ttc" id="anamespacevertex_html_a3c5c350b94bda0a0c6a33bb370f225c9"><div class="ttname"><a href="namespacevertex.html#a3c5c350b94bda0a0c6a33bb370f225c9">vertex::add</a></div><div class="ttdeci">unsigned int add(PolyhedronCollection &amp;p_coll, const Eigen::Vector3d new_point, bool checkpointexists, bool shouldPrintVertexExists)</div><div class="ttdoc">Aggiunge un punto, se non esiste ancora.</div><div class="ttdef"><b>Definition</b> vertex.cpp:53</div></div>
+<div class="ttc" id="astructPolyhedronCollection_html"><div class="ttname"><a href="structPolyhedronCollection.html">PolyhedronCollection</a></div><div class="ttdef"><b>Definition</b> PolyhedronCollection.hpp:8</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Nota sulla sicurezza</h2>
+<p>I dati di <code><a class="el" href="structPolyhedronCollection.html">PolyhedronCollection</a></code> sono pubblici, per ragioni di efficienza e semplicità. Tuttavia, l'accesso diretto <b>è sconsigliato</b>:</p><ul>
+<li>L'interfaccia tramite namespace fornisce controlli e coerenza</li>
+<li>Il codice è progettato per essere utilizzato in modo sicuro <b>tramite le funzioni fornite</b> </li>
+</ul>
+</div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 </div><!-- doc-content -->

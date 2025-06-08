@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['vertex_2ecpp_0',['vertex.cpp',['../vertex_8cpp.html',1,'']]],
-  ['vertex_2ehpp_1',['vertex.hpp',['../vertex_8hpp.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]]
 ];
