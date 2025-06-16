@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-inline constexpr double PRECISION_TOLLERANCE = 1e-6;
+inline constexpr double PRECISION_TOLLERANCE = 1e-12;
 
 namespace vertex{
 

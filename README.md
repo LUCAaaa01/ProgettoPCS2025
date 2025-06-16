@@ -26,7 +26,7 @@ Tutti i dati sono contenuti in una sola struct: `PolyhedronCollection`, che incl
  Ogni namespace include:
  - **Funzioni standard**: `add`, `initialize`, `getId`, `isEqual`, ecc.
  - **Funzioni specifiche** (legate al contesto):
-    - Esempio: `face::triangulateGeodesicClassI`, `vertex::projectOnSphere`, ecc.
+    - Esempio: `face::computeClassICharacteristicTriangulation`, `vertex::projectOnSphere`, ecc.
  
  ### Esempio d'uso consigliato
   ```cpp
