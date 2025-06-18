@@ -149,7 +149,7 @@ TEST_F(PolyhedronTest, FindShortestPath_SameVertex) {
     int v0 = p.Cell3DsVertices[poly_id][0];
     std::vector<int> vertices_path;
     std::vector<int> edges_path;
-    double dist = polyhedron::findShortestPath(p, poly_id, 0, 0, vertices_path, edges_path, false);
+    double dist = polyhedron::findShortestPath(p, poly_id, v0, v0, vertices_path, edges_path, false);
 
     EXPECT_DOUBLE_EQ(dist, 0.0);
     // Il path deve contenere esattamente un vertice (se stesso)
