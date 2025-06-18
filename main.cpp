@@ -22,7 +22,16 @@ int main(int argc, char* argv[]){
     unsigned int c = std::stoul(argv[4]);
 
     // controllo che la triangolazione non sia di classe III
-    if(c != 0 and c != b){
+    if(c != 0 && c != b){
+        if(b == 0){
+            unsigned int a = b;
+            b = c;
+            c = a;
+        }else{
+            std::cerr << "Errore! Il parametro c non è corretto!" << std::endl;
+            return 2;
+        }
+    }else if(c == 0 && b == 0){
         std::cerr << "Errore! Il parametro c non è corretto!" << std::endl;
         return 2;
     }
